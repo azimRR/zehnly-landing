@@ -655,7 +655,6 @@
         }
 
         function slideCarousel(direction) {
-            pauseAutoScroll();
             currentSlide += direction;
             if (currentSlide < 0) currentSlide = totalSlides - 1;
             if (currentSlide >= totalSlides) currentSlide = 0;
@@ -663,47 +662,17 @@
         }
 
         function goToSlide(slideIndex) {
-            pauseAutoScroll();
             currentSlide = slideIndex;
             updateCarousel();
         }
 
-        // Auto-scroll carousel every 4 seconds (paused during user interaction)
-        let autoScrollInterval;
-        let userInteracting = false;
-
-        function startAutoScroll() {
-            if (!userInteracting) {
-                autoScrollInterval = setInterval(() => {
-                    if (!userInteracting) {
-                        slideCarousel(1);
-                    }
-                }, 3000);
-            }
-        }
-
-        function stopAutoScroll() {
-            clearInterval(autoScrollInterval);
-        }
-
-        function pauseAutoScroll() {
-            userInteracting = true;
-            stopAutoScroll();
-            setTimeout(() => {
-                userInteracting = false;
-                startAutoScroll();
-            }, 3000); // Resume after 3 seconds of no interaction
-        }
-
-        // Start auto-scroll initially
-        startAutoScroll();
+        // Auto-scroll disabled
 
         // Touch/swipe support for mobile
         let startX = 0;
         let endX = 0;
 
         carouselContainer.addEventListener('touchstart', (e) => {
-            pauseAutoScroll();
             startX = e.touches[0].clientX;
         });
 
@@ -716,9 +685,8 @@
             }
         });
 
-        // Pause auto-scroll when user manually scrolls
+        // Update active dot based on scroll position
         carouselContainer.addEventListener('scroll', () => {
-            pauseAutoScroll();
             const slideWidth = 300;
             const newSlide = Math.round(carouselContainer.scrollLeft / slideWidth);
             if (newSlide !== currentSlide) {
@@ -728,10 +696,6 @@
                 });
             }
         });
-
-        // Also pause on mouse interactions
-        carouselContainer.addEventListener('mousedown', pauseAutoScroll);
-        carouselContainer.addEventListener('wheel', pauseAutoScroll);
     </script>
 </body>
 </html>
