@@ -499,17 +499,16 @@
     <div class="particles"></div>
     <div class="cursor"></div>
     
-    <a href="/" class="back-btn">← Back to Home</a>
     
     <div class="main-container">
         <div class="promocode-section">
-            <h1 class="promocode-title">Your Promocode</h1>
+            <h1 class="promocode-title">Sizning promo kodingiz</h1>
             <div class="promocode-display" id="promocodeText"></div>
-            <button class="copy-btn" id="copyBtn">📋 Copy Code</button>
+            <button class="copy-btn" id="copyBtn">📋 Nusxalash</button>
         </div>
         
         <div class="tutorial-section">
-            <h2 class="tutorial-title">How to Use</h2>
+            <h2 class="tutorial-title">Qanday ishlatish</h2>
             <div class="tutorial-images">
                 <div class="carousel-arrows left" onclick="slideCarousel(-1)">‹</div>
                 <div class="carousel-arrows right" onclick="slideCarousel(1)">›</div>
@@ -605,11 +604,11 @@
         copyBtn.addEventListener('click', async () => {
             try {
                 await navigator.clipboard.writeText(promocode);
-                copyBtn.textContent = '✅ Copied!';
+                copyBtn.textContent = '✅ Nusxalandi!';
                 copyBtn.classList.add('copied');
                 
                 setTimeout(() => {
-                    copyBtn.textContent = '📋 Copy Code';
+                    copyBtn.textContent = '📋 Nusxalash';
                     copyBtn.classList.remove('copied');
                 }, 2000);
             } catch (err) {
@@ -621,11 +620,11 @@
                 document.execCommand('copy');
                 document.body.removeChild(textArea);
                 
-                copyBtn.textContent = '✅ Copied!';
+                copyBtn.textContent = '✅ Nusxalandi!';
                 copyBtn.classList.add('copied');
                 
                 setTimeout(() => {
-                    copyBtn.textContent = '📋 Copy Code';
+                    copyBtn.textContent = '📋 Nusxalash';
                     copyBtn.classList.remove('copied');
                 }, 2000);
             }
@@ -656,6 +655,7 @@
         }
 
         function slideCarousel(direction) {
+            pauseAutoScroll();
             currentSlide += direction;
             if (currentSlide < 0) currentSlide = totalSlides - 1;
             if (currentSlide >= totalSlides) currentSlide = 0;
@@ -663,20 +663,47 @@
         }
 
         function goToSlide(slideIndex) {
+            pauseAutoScroll();
             currentSlide = slideIndex;
             updateCarousel();
         }
 
-        // Auto-scroll carousel every 4 seconds
-        setInterval(() => {
-            slideCarousel(1);
-        }, 4000);
+        // Auto-scroll carousel every 4 seconds (paused during user interaction)
+        let autoScrollInterval;
+        let userInteracting = false;
+
+        function startAutoScroll() {
+            if (!userInteracting) {
+                autoScrollInterval = setInterval(() => {
+                    if (!userInteracting) {
+                        slideCarousel(1);
+                    }
+                }, 4000);
+            }
+        }
+
+        function stopAutoScroll() {
+            clearInterval(autoScrollInterval);
+        }
+
+        function pauseAutoScroll() {
+            userInteracting = true;
+            stopAutoScroll();
+            setTimeout(() => {
+                userInteracting = false;
+                startAutoScroll();
+            }, 3000); // Resume after 3 seconds of no interaction
+        }
+
+        // Start auto-scroll initially
+        startAutoScroll();
 
         // Touch/swipe support for mobile
         let startX = 0;
         let endX = 0;
 
         carouselContainer.addEventListener('touchstart', (e) => {
+            pauseAutoScroll();
             startX = e.touches[0].clientX;
         });
 
@@ -689,8 +716,9 @@
             }
         });
 
-        // Update active dot based on scroll position
+        // Pause auto-scroll when user manually scrolls
         carouselContainer.addEventListener('scroll', () => {
+            pauseAutoScroll();
             const slideWidth = 300;
             const newSlide = Math.round(carouselContainer.scrollLeft / slideWidth);
             if (newSlide !== currentSlide) {
@@ -700,6 +728,10 @@
                 });
             }
         });
+
+        // Also pause on mouse interactions
+        carouselContainer.addEventListener('mousedown', pauseAutoScroll);
+        carouselContainer.addEventListener('wheel', pauseAutoScroll);
     </script>
 </body>
 </html>
