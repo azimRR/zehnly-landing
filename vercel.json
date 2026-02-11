@@ -1,16 +1,31 @@
 {
-  "rewrites": [
+  "builds": [
     {
-      "source": "/contact",
-      "destination": "/contact.html"
+      "src": "zehnly_landing_page-main/package.json",
+      "use": "@vercel/next"
     },
     {
-      "source": "/privacy-policy",
-      "destination": "/privacy-policy.html"
+      "src": "contact.html",
+      "use": "@vercel/static"
     },
     {
-      "source": "/promocode/:code",
-      "destination": "/promocode.html"
+      "src": "privacy-policy.html",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "promocode.html",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "assets/**",
+      "use": "@vercel/static"
     }
+  ],
+  "routes": [
+    { "src": "/contact", "dest": "/contact.html" },
+    { "src": "/privacy-policy", "dest": "/privacy-policy.html" },
+    { "src": "/promocode/(.*)", "dest": "/promocode.html" },
+    { "src": "/assets/(.*)", "dest": "/assets/$1" },
+    { "src": "/(.*)", "dest": "/zehnly_landing_page-main/$1" }
   ]
 }
