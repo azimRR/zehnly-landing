@@ -1,0 +1,51 @@
+{
+  "Navbar": {
+    "features": "Xususiyatlar",
+    "method": "Usul",
+    "pricing": "Narxlar",
+    "appStore": "App Store",
+    "googlePlay": "Google Play"
+  },
+  "Hero": {
+    "title": "Ingliz tilini o'rganishning bepul, qiziqarli va <green>samarali</green> <gray>usuli!</gray>",
+    "trustedBy": "30k+ talabalar ishonadi"
+  },
+  "Common": {
+    "loading": "Yuklanmoqda..."
+  },
+  "FeatureSection": {
+    "title": "O'ynab o'rganing",
+    "subtitle": "Zerikarli darsliklarni unuting. Zehnly ingliz tilini o'rganishni o'yinga aylantirish uchun qiziqarli mini-o'yinlardan foydalanadi.",
+    "flashcards": { "title": "Fleshkardlar", "description": "Sizning darajangizga moslashtirilgan sun'iy intellekt fleshkardlari yordamida yangi so'zlarni tez o'zlashtiring." },
+    "oddOneOut": { "title": "Ortiqchasini top", "description": "Mos kelmaydigan so'zni toping. Mantiq va so'z boyligingizni darhol oshiring." },
+    "connections": { "title": "Bog'liqliklar", "description": "To'rtta bog'liq narsalar guruhini toping. Qonuniyatlarni toping va aloqa o'rnating!" },
+    "fourPics": { "title": "4 Rasm 1 So'z", "description": "To'rtta rasmni bog'laydigan so'zni toping. Ingliz tilida tushunchalar bilan fikrlashni mashq qiling." },
+    "words": { "title": "Kvadratlar", "description": "Rangli harf plitkalari va naqshlarni tahlil qilib, yashirin so'zlarni toping." },
+    "wordBattle": { "title": "So'z Jangi", "description": "Raqiblar bilan 1ga 1 bellashuvlarda tezlik va so'z boyligingizni sinang." },
+    "appStore": "App Store",
+    "googlePlay": "Google Play"
+  },
+  "Footer": {
+    "levelComplete": "Bosqich yakunlandi!",
+    "journeyPart1": "Siz pastga yetdingiz.",
+    "journeyPart2": "Ammo sayohatingiz endi boshlanmoqda.",
+    "menu": "MENYU",
+    "features": "Xususiyatlar",
+    "contact": "Aloqa",
+    "play": "O'yin",
+    "mysteryBox": "Sirli quti",
+    "promo": "Promo: FREE7",
+    "contactUs": "Biz bilan bog'laning",
+    "emailPlaceholder": "Emailingiz",
+    "messagePlaceholder": "Xabar...",
+    "sendMessage": "Yuborish",
+    "readyForNextLevel": "Keyingi bosqichga tayyormisiz?",
+    "getTheApp": "Ilovani yuklab oling",
+    "copyright": "© 2025 Zehnly AI • O'yin tugadi • Qayta urinib ko'rasizmi?",
+    "about": "Biz haqimizda",
+    "privacyPolicy": "Maxfiylik siyosati",
+    "termsOfService": "Foydalanish shartlari",
+    "cookiePolicy": "Cookie siyosati",
+    "allRightsReserved": "Barcha huquqlar himoyalangan."
+  }
+}

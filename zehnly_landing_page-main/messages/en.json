@@ -1,0 +1,49 @@
+{
+  "Navbar": {
+    "features": "Features",
+    "method": "Method",
+    "pricing": "Pricing",
+    "appStore": "App Store",
+    "googlePlay": "Google Play"
+  },
+  "Hero": {
+    "title": "The free, fun, and <green>effective</green> <gray>way to learn English!</gray>",
+    "trustedBy": "Trusted by 30k+ students"
+  },
+  "Common": {
+    "loading": "Loading..."
+  },
+  "FeatureSection": {
+    "title": "Play your way to fluency",
+    "subtitle": "Forget boring textbooks. Zehnly uses addictive mini-games to make learning English feel like play.",
+    "flashcards": { "title": "Flashcards", "description": "Master new vocabulary quickly with AI-powered flashcards tailored to your learning level." },
+    "oddOneOut": { "title": "Odd One Out", "description": "Spot the word that doesn't belong. Sharpen your logic and vocabulary skills instantly." },
+    "connections": { "title": "Connections", "description": "Find groups of four related items. Spot the patterns and make the connections!" },
+    "fourPics": { "title": "4 Pics 1 Word", "description": "Find the word that connects four images. Train your brain to think conceptually in English." },
+    "words": { "title": "Squares", "description": "Discover hidden words by analyzing colorful letter tiles and patterns." },
+    "wordBattle": { "title": "Word Battle", "description": "Face off against opponents in thrilling 1v1 battles of speed and vocabulary." }
+  },
+  "Footer": {
+    "levelComplete": "Level Complete!",
+    "journeyPart1": "You've reached the bottom.",
+    "journeyPart2": "But your journey is just starting.",
+    "menu": "MENU",
+    "features": "Features",
+    "contact": "Contact",
+    "play": "Play",
+    "mysteryBox": "Mystery Box",
+    "promo": "Promo: FREE7",
+    "contactUs": "Contact Us",
+    "emailPlaceholder": "Your Email",
+    "messagePlaceholder": "Message...",
+    "sendMessage": "Send Message",
+    "readyForNextLevel": "Ready for Next Level?",
+    "getTheApp": "Get the App",
+    "copyright": "© 2025 Zehnly AI • Game Over • Try Again?",
+    "about": "About",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service",
+    "cookiePolicy": "Cookie Policy",
+    "allRightsReserved": "All rights reserved."
+  }
+}
