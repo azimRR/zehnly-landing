@@ -2,7 +2,7 @@
 
 import { Link } from '@/i18n/routing';
 import Image from 'next/image';
-import logo from '@/assets/Logo.jpg';
+import logo from '@/assets/logo.jpg';
 import { useState, useEffect } from 'react';
 import { ModeToggle } from './ModeToggle';
 import { LanguageSwitcher } from './LanguageSwitcher';
