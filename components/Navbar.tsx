@@ -65,23 +65,7 @@ export const Navbar = () => {
           {/* Desktop nav */}
           <nav className="relative z-10 hidden md:flex flex-1 items-center justify-end gap-1">
             {/* Nav links */}
-            <div className="flex items-center gap-1 mr-3">
-              <a className="relative px-3 py-1.5 text-sm text-gray-400 hover:text-white transition-colors group" href="#features">
-                {t("features")}
-                <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 group-hover:w-4/5 h-px bg-gradient-to-r from-transparent via-purple-400 to-transparent transition-all duration-300" />
-              </a>
-              <a className="relative px-3 py-1.5 text-sm text-gray-400 hover:text-white transition-colors group whitespace-nowrap" href="#how-it-works">
-                {t("howItWorks")}
-                <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 group-hover:w-4/5 h-px bg-gradient-to-r from-transparent via-purple-400 to-transparent transition-all duration-300" />
-              </a>
-              <a className="relative px-3 py-1.5 text-sm text-gray-400 hover:text-white transition-colors group" href="#pricing">
-                {t("pricing")}
-                <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 group-hover:w-4/5 h-px bg-gradient-to-r from-transparent via-purple-400 to-transparent transition-all duration-300" />
-              </a>
-            </div>
-
-            {/* Separator */}
-            <div className="w-px h-5 bg-gray-700/60 mr-3" />
+            {/* Nav links hidden temporarily */}
 
             {/* Language */}
             <div className="mr-2">
