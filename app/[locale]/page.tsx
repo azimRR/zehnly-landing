@@ -13,8 +13,8 @@ export default function Home() {
     <main className="relative min-h-screen overflow-hidden">
       <HeroSection />
       <Stats />
-      <HowItWorks />
-      <FeatureSection />
+      {/* <HowItWorks /> */}
+      {/* <FeatureSection /> */}
       <SpeakingPractice />
       <Testimonials />
       <Pricing />
