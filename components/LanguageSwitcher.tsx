@@ -1,15 +1,13 @@
 "use client";
 
 import { useLocale } from "next-intl";
-import { usePathname, useRouter } from "@/i18n/routing";
-import { useState, useTransition, useEffect, useRef } from "react";
+import { usePathname } from "@/i18n/routing";
+import { useState, useEffect, useRef } from "react";
 import { Check, ChevronDown } from "lucide-react";
 
 export const LanguageSwitcher = () => {
   const locale = useLocale();
-  const router = useRouter();
   const pathname = usePathname();
-  const [isPending, startTransition] = useTransition();
   const [isOpen, setIsOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -23,9 +21,8 @@ export const LanguageSwitcher = () => {
 
   const handleSelect = (code: string) => {
     setIsOpen(false);
-    startTransition(() => {
-      router.replace(pathname, { locale: code });
-    });
+    if (code === locale) return;
+    window.location.href = `/${code}${pathname}`;
   };
 
   useEffect(() => {
@@ -42,7 +39,7 @@ export const LanguageSwitcher = () => {
     <div className="relative" ref={containerRef}>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className={`flex items-center gap-1.5 px-2 py-1 rounded-lg text-gray-400 hover:text-gray-200 transition-colors text-sm ${isPending ? "opacity-50" : ""}`}
+        className="flex items-center gap-1.5 px-2 py-1 rounded-lg text-gray-400 hover:text-gray-200 transition-colors text-sm"
       >
         <span className="text-base">{currentLanguage.flag}</span>
         <ChevronDown className={`w-3 h-3 transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`} />
@@ -59,7 +56,6 @@ export const LanguageSwitcher = () => {
           <button
             key={lang.code}
             onClick={() => handleSelect(lang.code)}
-            disabled={isPending}
             className={`w-full flex items-center gap-3 px-4 py-2.5 hover:bg-gray-800 transition-colors text-left ${
               locale === lang.code ? "bg-gray-800" : ""
             }`}
