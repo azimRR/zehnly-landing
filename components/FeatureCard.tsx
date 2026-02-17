@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { LucideIcon, ChevronLeft, ChevronRight, X } from "lucide-react";
+import { LucideIcon, X } from "lucide-react";
 import Image from "next/image";
 import { useTheme } from "next-themes";
 
@@ -19,248 +19,146 @@ interface FeatureCardProps {
   darkImages?: string[];
 }
 
+const colorMap: Record<string, { bg: string; text: string }> = {
+  'bg-zehnly-yellow': { bg: 'bg-amber-100 dark:bg-amber-900/20', text: 'text-amber-600 dark:text-amber-400' },
+  'bg-zehnly-violet': { bg: 'bg-violet-100 dark:bg-violet-900/20', text: 'text-violet-600 dark:text-violet-400' },
+  'bg-zehnly-red': { bg: 'bg-rose-100 dark:bg-rose-900/20', text: 'text-rose-500 dark:text-rose-400' },
+  'bg-zehnly-green': { bg: 'bg-emerald-100 dark:bg-emerald-900/20', text: 'text-emerald-600 dark:text-emerald-400' },
+};
+
 export const FeatureCard = ({
   id,
   title,
   description,
   icon: Icon,
-  image,
-  imageDark,
   color,
   lightImages = [],
   darkImages = [],
   delay = 0,
 }: FeatureCardProps) => {
-  const [isExpanded, setIsExpanded] = useState(false);
-  const [isFlipped, setIsFlipped] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const { resolvedTheme } = useTheme();
 
-  // Determine which set of images to use based on theme
   const currentThemeImages = resolvedTheme === 'dark' && darkImages.length > 0 ? darkImages : lightImages;
-  
-  // Determine front image
-  const frontImage = (resolvedTheme === 'dark' && imageDark) ? imageDark : image;
+  const imagesToDisplay = currentThemeImages.length > 0 ? currentThemeImages : [];
 
-  // Ensure we have images to display, fallback to placeholders if empty
-  const imagesToDisplay = currentThemeImages.length > 0 ? currentThemeImages : [
-      "/assets/Flashcards(white)/Flashcards.png",
-  ];
-
-  // Auto-rotate carousel when expanded and flipped
   useEffect(() => {
-    let interval: NodeJS.Timeout;
-    if (isExpanded && isFlipped) {
-      interval = setInterval(() => {
-        setCurrentImageIndex((prev) => (prev + 1) % imagesToDisplay.length);
-      }, 3000);
-    }
+    if (!isOpen || imagesToDisplay.length <= 1) return;
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prev) => (prev + 1) % imagesToDisplay.length);
+    }, 3000);
     return () => clearInterval(interval);
-  }, [isExpanded, isFlipped, imagesToDisplay.length]);
+  }, [isOpen, imagesToDisplay.length]);
 
-  const handleExpand = () => {
-    setIsExpanded(true);
-   setTimeout(() => setIsFlipped(true), 500)
-  };
-
-  const handleClose = (e?: React.MouseEvent) => {
-    e?.stopPropagation();
-    setIsExpanded(false);
-    setCurrentImageIndex(0);
-  };
- 
-
-  const nextImage = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    setCurrentImageIndex((prev) => (prev + 1) % imagesToDisplay.length);
-  };
-
-  const prevImage = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    setCurrentImageIndex((prev) => (prev - 1 + imagesToDisplay.length) % imagesToDisplay.length);
-  };
+  const colors = colorMap[color] || colorMap['bg-zehnly-violet'];
 
   return (
     <>
       <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay, duration: 0.1 }}
-          whileHover={{ y: -8 }}
-          className="relative"
+        initial={{ opacity: 0, y: 16 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-40px" }}
+        transition={{ duration: 0.4, delay: delay * 0.5, ease: "easeOut" }}
+        onClick={() => { setIsOpen(true); setCurrentImageIndex(0); }}
+        className="bg-white dark:bg-dark-surface rounded-2xl border border-zinc-200/80 dark:border-dark-border p-6 cursor-pointer group hover:border-zinc-300 dark:hover:border-zinc-600 transition-colors"
       >
-        { !isExpanded &&
-          <motion.div
-            layoutId={`card-${id}`}
-            onClick={handleExpand}
-            className="bg-white dark:bg-dark-surface rounded-3xl overflow-hidden border-4 border-slate-100 dark:border-dark-border shadow-3d hover:shadow-3d-violet hover:border-zehnly-violet dark:hover:border-zehnly-violet-light transition-all duration-200 cursor-pointer group h-full flex flex-col relative z-1"
-          >
-            <div className={`relative h-48 w-full ${color} flex items-center justify-center overflow-hidden`}>
-              <div className="absolute inset-0 bg-black/5 group-hover:bg-transparent transition-colors duration-300" />
-              <div className="absolute inset-0 opacity-10" 
-                  style={{ backgroundImage: 'radial-gradient(circle, #fff 10%, transparent 10%)', backgroundSize: '20px 20px' }} 
-              />
-              {image ? (
-                <div className="relative h-40 w-40 transform group-hover:scale-110 transition-transform duration-300 ease-out">
-                  <Image src={image} alt={title} fill className="object-contain drop-shadow-xl" />
-                </div>
-              ) : (
-                <Icon className="w-20 h-20 text-white drop-shadow-lg transform group-hover:scale-110 transition-transform duration-300" />
-              )}
-            </div>
-            <div className="p-6 flex-1 flex flex-col">
-              <h3 className="text-2xl font-black text-slate-800 dark:text-dark-text mb-3 tracking-tight group-hover:text-zehnly-violet dark:group-hover:text-zehnly-violet-light transition-colors">
-                {title}
-              </h3>
-              <p className="text-slate-600 dark:text-dark-text-muted font-medium leading-relaxed flex-1">
-                {description}
-              </p>
-            </div>
-          </motion.div>}
-          { isExpanded && <motion.div
-            onClick={handleExpand}
-            className="bg-white dark:bg-dark-surface rounded-3xl overflow-hidden border-4 border-slate-100 dark:border-dark-border shadow-3d hover:shadow-3d-violet hover:border-zehnly-violet dark:hover:border-zehnly-violet-light transition-all duration-200 cursor-pointer group h-full flex flex-col absolute z-0 inset-0 opacity-0"
-          >
-            <div className={`relative h-48 w-full ${color} flex items-center justify-center overflow-hidden`}>
-              <div className="absolute inset-0 bg-black/5 group-hover:bg-transparent transition-colors duration-300" />
-              <div className="absolute inset-0 opacity-10" 
-                  style={{ backgroundImage: 'radial-gradient(circle, #fff 10%, transparent 10%)', backgroundSize: '20px 20px' }} 
-              />
-              {image ? (
-                <div className="relative h-40 w-40 transform group-hover:scale-110 transition-transform duration-300 ease-out">
-                  <Image src={image} alt={title} fill className="object-contain drop-shadow-xl" />
-                </div>
-              ) : (
-                <Icon className="w-20 h-20 text-white drop-shadow-lg transform group-hover:scale-110 transition-transform duration-300" />
-              )}
-            </div>
-            <div className="p-6 flex-1 flex flex-col">
-              <h3 className="text-2xl font-black text-slate-800 dark:text-dark-text mb-3 tracking-tight group-hover:text-zehnly-violet dark:group-hover:text-zehnly-violet-light transition-colors">
-                {title}
-              </h3>
-              <p className="text-slate-600 dark:text-dark-text-muted font-medium leading-relaxed flex-1">
-                {description}
-              </p>
-            </div>
-          </motion.div>}
+        <div className={`w-10 h-10 rounded-xl ${colors.bg} flex items-center justify-center mb-4`}>
+          <Icon className={`w-5 h-5 ${colors.text}`} />
+        </div>
+        <h3 className="text-lg font-semibold text-zinc-900 dark:text-white mb-2 group-hover:text-zehnly-violet dark:group-hover:text-zehnly-violet-light transition-colors">
+          {title}
+        </h3>
+        <p className="text-sm text-zinc-500 dark:text-dark-text-muted leading-relaxed">
+          {description}
+        </p>
       </motion.div>
 
-      <AnimatePresence mode="wait">
-        {isExpanded && (
-        
-          <motion.div 
-            key="modal"
-            transition={{ duration: 0.3, ease: "easeOut" }} 
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-8 bg-black/60 dark:bg-black/80 backdrop-blur-sm"
+      {/* Screenshot modal */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm"
+            onClick={() => setIsOpen(false)}
           >
             <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.3 }}
-              className="absolute inset-0"
-              onClick={handleClose}
-            />
-            <div className="relative w-full max-w-[400px] aspect-10/21 h-auto max-h-[90vh] perspective-[1600px]">
-              <motion.div
-                layoutId={`card-${id}`}
-                layout
-                className="w-full h-full relative transform-3d"
-                animate={{ rotateY: isFlipped ? -180 : 0 }}
-                exit={{ 
-                  rotateY: 0,
-                  scale: 0.9,
-                  opacity: 0,
-                  y: 30,
-                  transition: { 
-                    duration: 0.5,
-                    ease: [0.43, 0.13, 0.23, 0.96]
-                  }
-                }}
-                transition={{ 
-                  layout: { duration: 0.8, ease: "easeInOut" },
-                  rotateY: { duration: 0.8, ease: "easeInOut" }
-                }}
-              >
-                {/* FRONT FACE */}
-                <div className="absolute inset-0 backface-hidden bg-white dark:bg-dark-surface rounded-[3rem] overflow-hidden border-8 border-slate-100 dark:border-dark-border shadow-2xl">
-                    {/* Recreate front content for visual continuity */}
-                    <div className={`relative h-1/2 w-full ${color} flex items-center justify-center overflow-hidden`}>
-                      <div className="absolute inset-0 opacity-10" 
-                            style={{ backgroundImage: 'radial-gradient(circle, #fff 10%, transparent 10%)', backgroundSize: '20px 20px' }} />
-                      {frontImage ? (
-                          <div className="relative h-48 w-48">
-                              <Image src={frontImage} alt={title} fill className="object-contain drop-shadow-xl" />
-                          </div>
-                      ) : (
-                          <Icon className="w-32 h-32 text-white drop-shadow-lg" />
-                      )}
-                    </div>
-                    <div className="p-8 h-1/2 flex flex-col items-center text-center bg-white dark:bg-dark-surface">
-                      <h3 className="text-3xl font-black text-slate-800 dark:text-dark-text mb-6 tracking-tight">{title}</h3>
-                      <p className="text-slate-600 dark:text-dark-text-muted font-medium text-lg leading-relaxed">{description}</p>
-                    </div>
+              initial={{ opacity: 0, scale: 0.95, y: 10 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 10 }}
+              transition={{ duration: 0.25, ease: "easeOut" }}
+              className="relative w-full max-w-[360px] aspect-[10/21] max-h-[85vh]"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Phone frame */}
+              <div className="w-full h-full rounded-[2.8rem] overflow-hidden bg-zinc-900 border-[6px] border-zinc-800 shadow-2xl flex flex-col">
+                {/* Notch */}
+                <div className="h-7 w-full bg-zinc-900 flex justify-center relative shrink-0">
+                  <div className="w-20 h-5 bg-black rounded-b-xl absolute top-0" />
                 </div>
 
-                {/* BACK FACE - iPHONE STYLE */}
-                <div 
-                  className="absolute inset-0 backface-hidden rounded-[3rem] overflow-hidden bg-slate-900 border-8 border-slate-900 shadow-2xl flex flex-col"
-                  style={{ transform: "rotateY(180deg)" }}
-                >
-                  {/* Status Bar / Notch Area */}
-                  <div className="h-8 w-full bg-slate-900 flex justify-center items-center z-20 relative">
-                      <div className="w-24 h-6 bg-black rounded-b-xl absolute top-0" />
-                  </div>
-
-                  {/* Screen Content */}
-                  <div className="flex-1 bg-white dark:bg-slate-100 relative overflow-hidden rounded-b-[2.5rem]">
-                    
-                    {/* Carousel */}
-                    <div className="absolute inset-0 flex items-center justify-center bg-slate-50">
-                      <AnimatePresence mode="wait">
-                        <motion.div
-                          key={currentImageIndex}
-                          initial={{ opacity: 0, x: 50 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          exit={{ opacity: 0, x: -50 }}
-                          transition={{ duration: 0.3 }}
-                          className="relative w-full h-full"
-                        >
-                            <Image 
-                              src={imagesToDisplay[currentImageIndex]} 
-                              alt={`Flashcard ${currentImageIndex + 1}`}
-                              fill
-                              className="object-cover"
-                            />
-                            
-                            {/* Gradient Overlay for Text Readability */}
-                            <div className="absolute inset-0 bg-linear-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
-                        </motion.div>
-                      </AnimatePresence>
-                      
-                      {/* Close Button */}
-                        <button 
-                        onClick={() =>{setIsFlipped(false);setTimeout(() =>{ handleClose()}, 800)}}
-                        className="absolute top-4 right-4 w-10 h-10 bg-black/20 backdrop-blur-md rounded-full flex items-center justify-center hover:bg-black/40 transition-colors z-10 text-white"
+                {/* Screen */}
+                <div className="flex-1 bg-white relative overflow-hidden">
+                  {imagesToDisplay.length > 0 ? (
+                    <AnimatePresence mode="wait">
+                      <motion.div
+                        key={currentImageIndex}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.3 }}
+                        className="absolute inset-0"
                       >
-                        <X className="w-6 h-6" />
-                      </button>
+                        <Image
+                          src={imagesToDisplay[currentImageIndex]}
+                          alt={`${title} screenshot ${currentImageIndex + 1}`}
+                          fill
+                          className="object-cover"
+                        />
+                      </motion.div>
+                    </AnimatePresence>
+                  ) : (
+                    <div className="flex items-center justify-center h-full bg-zinc-50">
+                      <Icon className="w-16 h-16 text-zinc-200" />
                     </div>
-                  </div>
-                  
-                  {/* Home Indicator */}
-                  <div className="h-6 w-full bg-slate-900 flex justify-center items-start pt-2">
-                    <div className="w-32 h-1 bg-white/30 rounded-full" />
-                  </div>
+                  )}
+
+                  {/* Close */}
+                  <button
+                    onClick={() => setIsOpen(false)}
+                    className="absolute top-3 right-3 w-8 h-8 bg-black/30 backdrop-blur-md rounded-full flex items-center justify-center text-white hover:bg-black/50 transition-colors z-10"
+                  >
+                    <X className="w-4 h-4" />
+                  </button>
+
+                  {/* Dots */}
+                  {imagesToDisplay.length > 1 && (
+                    <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-1.5 z-10">
+                      {imagesToDisplay.slice(0, 10).map((_, i) => (
+                        <button
+                          key={i}
+                          onClick={() => setCurrentImageIndex(i)}
+                          className={`h-1.5 rounded-full transition-all ${
+                            i === currentImageIndex ? 'bg-white w-4' : 'bg-white/40 w-1.5'
+                          }`}
+                        />
+                      ))}
+                    </div>
+                  )}
                 </div>
-              </motion.div>
-            </div>
+
+                {/* Home indicator */}
+                <div className="h-5 w-full bg-zinc-900 flex justify-center items-center shrink-0">
+                  <div className="w-28 h-1 bg-white/20 rounded-full" />
+                </div>
+              </div>
+            </motion.div>
           </motion.div>
-        
-      )}
-      </AnimatePresence>  
-      
+        )}
+      </AnimatePresence>
     </>
   );
 };

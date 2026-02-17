@@ -1,10 +1,8 @@
 @import "tailwindcss";
 
-/* Tailwind CSS v4 Custom Variant for Dark Mode */
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  /* Brand Colors */
   --color-zehnly-violet: #6c42bf;
   --color-zehnly-violet-dark: #5b37a3;
   --color-zehnly-violet-light: #8460d1;
@@ -14,116 +12,19 @@
   --color-zehnly-yellow: #ffc800;
   --color-zehnly-red: #ff4b4b;
 
-  /* Dark Mode Color System - "Midnight Gamer" */
-  --color-dark-bg: #0b0514; /* Deep Void Violet */
-  --color-dark-surface: #1a103c; /* Galaxy Violet */
-  --color-dark-surface-hover: #2d1b64; /* Lighter Violet for hover */
-  --color-dark-text: #e2e8f0; /* Soft White */
-  --color-dark-text-muted: #94a3b8; /* Muted Slate */
-  --color-dark-text-subtle: #64748b; /* Subtle Slate */
-  --color-dark-border: #3a2575; /* Violet Border */
-
-  /* Shadows */
-  --shadow-3d: 0px 4px 0px 0px rgba(0, 0, 0, 0.2);
-  --shadow-3d-green: 0px 4px 0px 0px #46a302;
-  --shadow-3d-violet: 0px 4px 0px 0px #5b37a3;
-  --shadow-3d-dark: 0px 4px 0px 0px rgba(0, 0, 0, 0.4);
+  --color-dark-bg: #0a0a0b;
+  --color-dark-surface: #161618;
+  --color-dark-surface-hover: #1e1e21;
+  --color-dark-text: #fafafa;
+  --color-dark-text-muted: #a1a1aa;
+  --color-dark-text-subtle: #71717a;
+  --color-dark-border: #27272a;
 
   --font-sans:
     var(--font-jakarta), ui-sans-serif, system-ui, sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-
-  --font-display:
-    var(--font-jakarta), ui-sans-serif, system-ui, sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-
-  --background-image-sandy-texture: url("/assets/noise.svg");
-
-  @keyframes float {
-    0%,
-    100% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(-10px);
-    }
-  }
-  --animate-float: float 3s ease-in-out infinite;
-
-  @keyframes shake {
-    0%,
-    100% {
-      transform: rotate(0deg);
-    }
-    25% {
-      transform: rotate(-5deg);
-    }
-    75% {
-      transform: rotate(5deg);
-    }
-  }
-  --animate-shake: shake 0.5s ease-in-out infinite;
-}
-
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
 }
 
 html {
   scroll-behavior: smooth;
-}
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-
-  .hide-scrollbar::-webkit-scrollbar {
-    display: none;
-  }
-  .hide-scrollbar {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
-}
-
-/* Smooth theme transitions */
-* {
-  transition:
-    background-color 0.3s ease,
-    border-color 0.3s ease;
-}
-
-/* Custom Scrollbar */
-::-webkit-scrollbar {
-  width: 10px;
-}
-::-webkit-scrollbar-track {
-  background: #f1f1f1;
-}
-.dark ::-webkit-scrollbar-track {
-  background: #1e293b;
-}
-::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
-  border-radius: 5px;
-}
-.dark ::-webkit-scrollbar-thumb {
-  background: #475569;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8;
-}
-.dark ::-webkit-scrollbar-thumb:hover {
-  background: #64748b;
-}
-
-@keyframes shimmer {
-  from {
-    transform: translateX(-100%) skewX(-15deg);
-  }
-  to {
-    transform: translateX(200%) skewX(-15deg);
-  }
 }

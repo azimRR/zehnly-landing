@@ -1,13 +1,11 @@
 "use client";
 
 import { FeatureCard } from "@/components/FeatureCard";
-import { Sword, Image as ImageIcon, HelpCircle, Layers, Swords, Grid3x3, ChevronLeft, ChevronRight } from "lucide-react";
+import { Sword, Image as ImageIcon, HelpCircle, Layers, Swords, Grid3x3 } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { useRef } from "react";
 
 export const FeatureSection = () => {
   const t = useTranslations('FeatureSection');
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   const features = [
     {
@@ -253,24 +251,21 @@ export const FeatureSection = () => {
   ];
 
   return (
-    <section id="features" className="py-24 bg-white dark:bg-dark-bg transition-colors duration-300 relative">
-      <div className="container mx-auto px-4 relative flex flex-col justify-center min-h-[80vh]">
-        <div className="text-center mb-12 lg:mb-16 space-y-4">
-          <h2 className="text-4xl lg:text-5xl font-extrabold text-zehnly-violet dark:text-white tracking-tight">
+    <section id="features" className="py-24 lg:py-32 px-6">
+      <div className="max-w-6xl mx-auto">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl lg:text-4xl font-bold tracking-tight">
             {t('title')}
           </h2>
-          <p className="text-lg text-slate-600 dark:text-dark-text-muted font-medium max-w-2xl mx-auto">
+          <p className="mt-4 text-zinc-500 dark:text-dark-text-muted text-lg max-w-2xl mx-auto">
             {t('subtitle')}
           </p>
         </div>
 
-        {/* Responsive Grid Layout */}
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 justify-items-center max-w-7xl mx-auto"> 
-            {features.map((feature, index) => (
-                <div key={feature.title} className="w-full max-w-[320px] h-[440px]">
-                   <FeatureCard {...feature} />
-                </div>
-            ))}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {features.map((feature) => (
+            <FeatureCard key={feature.id} {...feature} />
+          ))}
         </div>
       </div>
     </section>
