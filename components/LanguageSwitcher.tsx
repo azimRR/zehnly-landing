@@ -42,30 +42,34 @@ export const LanguageSwitcher = () => {
     <div className="relative" ref={containerRef}>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-1.5 px-2 py-1 rounded-lg text-gray-400 hover:text-gray-200 transition-colors text-sm"
+        className={`flex items-center gap-1.5 px-2 py-1 rounded-lg text-gray-400 hover:text-gray-200 transition-colors text-sm ${isPending ? "opacity-50" : ""}`}
       >
         <span className="text-base">{currentLanguage.flag}</span>
         <ChevronDown className={`w-3 h-3 transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`} />
       </button>
 
-      {isOpen && (
-        <div className="absolute top-full right-0 mt-2 w-40 bg-gray-900 rounded-xl border border-gray-700 shadow-xl overflow-hidden z-50">
-          {languages.map((lang) => (
-            <button
-              key={lang.code}
-              onClick={() => handleSelect(lang.code)}
-              disabled={isPending}
-              className={`w-full flex items-center gap-3 px-4 py-2.5 hover:bg-gray-800 transition-colors text-left ${
-                locale === lang.code ? "bg-gray-800" : ""
-              }`}
-            >
-              <span className="text-base">{lang.flag}</span>
-              <span className="text-sm font-medium text-gray-300 flex-1">{lang.label}</span>
-              {locale === lang.code && <Check className="w-3.5 h-3.5 text-purple-400" />}
-            </button>
-          ))}
-        </div>
-      )}
+      <div
+        className={`absolute top-full right-0 mt-2 w-40 bg-gray-900 rounded-xl border border-gray-700 shadow-xl overflow-hidden z-50 transition-all duration-200 origin-top-right ${
+          isOpen
+            ? "opacity-100 scale-100 translate-y-0 pointer-events-auto"
+            : "opacity-0 scale-95 -translate-y-1 pointer-events-none"
+        }`}
+      >
+        {languages.map((lang) => (
+          <button
+            key={lang.code}
+            onClick={() => handleSelect(lang.code)}
+            disabled={isPending}
+            className={`w-full flex items-center gap-3 px-4 py-2.5 hover:bg-gray-800 transition-colors text-left ${
+              locale === lang.code ? "bg-gray-800" : ""
+            }`}
+          >
+            <span className="text-base">{lang.flag}</span>
+            <span className="text-sm font-medium text-gray-300 flex-1">{lang.label}</span>
+            {locale === lang.code && <Check className="w-3.5 h-3.5 text-purple-400" />}
+          </button>
+        ))}
+      </div>
     </div>
   );
 };
