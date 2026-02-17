@@ -70,7 +70,7 @@ export const Navbar = () => {
                 {t("features")}
                 <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 group-hover:w-4/5 h-px bg-gradient-to-r from-transparent via-purple-400 to-transparent transition-all duration-300" />
               </a>
-              <a className="relative px-3 py-1.5 text-sm text-gray-400 hover:text-white transition-colors group" href="#how-it-works">
+              <a className="relative px-3 py-1.5 text-sm text-gray-400 hover:text-white transition-colors group whitespace-nowrap" href="#how-it-works">
                 {t("howItWorks")}
                 <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 group-hover:w-4/5 h-px bg-gradient-to-r from-transparent via-purple-400 to-transparent transition-all duration-300" />
               </a>
