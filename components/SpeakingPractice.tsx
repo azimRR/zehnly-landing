@@ -1,12 +1,38 @@
-import { Mic, MessageCircle, BarChart3, Brain } from "lucide-react";
+"use client";
+
+import { Mic, MessageCircle, BarChart3, Brain, ChevronLeft, ChevronRight } from "lucide-react";
+import { useState, useRef, useCallback } from "react";
+
+const screenshots = [
+  "/assets/FeaturesEx/FlashCards(light)/Pronunciation-1.jpg",
+  "/assets/FeaturesEx/FlashCards(light)/Pronunciation.jpg",
+  "/assets/FeaturesEx/FlashCards(light)/Pronunciation-2.jpg",
+].map((p) => p.split("/").map(encodeURIComponent).join("/"));
 
 export default function SpeakingPractice() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const scrollRef = useRef<HTMLDivElement>(null);
+
   const features = [
     { icon: Mic, title: "Pronunciation Feedback", description: "Get instant AI feedback on how you pronounce every word and sentence." },
     { icon: MessageCircle, title: "Conversation Scenarios", description: "Practice real-world dialogues: ordering food, job interviews, travel, and more." },
     { icon: BarChart3, title: "Progress Tracking", description: "See your speaking accuracy improve over time with detailed analytics." },
     { icon: Brain, title: "Adaptive AI Tutor", description: "The AI adjusts difficulty and topics based on your strengths and weaknesses." },
   ];
+
+  const scrollToIndex = useCallback((index: number) => {
+    const el = scrollRef.current;
+    if (!el) return;
+    const child = el.children[index] as HTMLElement;
+    if (child) child.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+    setCurrentIndex(index);
+  }, []);
+
+  const handleScroll = useCallback(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+    setCurrentIndex(Math.round(el.scrollLeft / el.clientWidth));
+  }, []);
 
   return (
     <section id="speaking" className="relative">
@@ -16,53 +42,70 @@ export default function SpeakingPractice() {
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="border-t py-12 [border-image:linear-gradient(to_right,transparent,--theme(--color-slate-400/.25),transparent)1] md:py-20">
           <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
-            {/* Left: Visual */}
+            {/* Left: Phone */}
             <div className="flex-1 relative" data-aos="fade-right">
-              <div className="relative mx-auto w-full max-w-sm">
-                {/* Phone mockup */}
-                <div className="aspect-[9/16] rounded-[3rem] bg-gray-900 border-4 border-gray-800 overflow-hidden shadow-2xl">
-                  <div className="h-8 bg-gray-900 flex justify-center relative">
-                    <div className="w-20 h-5 bg-black rounded-b-xl absolute top-0" />
-                  </div>
-                  <div className="flex-1 bg-linear-to-br from-purple-900/40 via-gray-900 to-green-900/30 p-6 space-y-4">
-                    {/* Chat bubbles */}
-                    <div className="flex justify-end">
-                      <div className="bg-purple-600/80 rounded-2xl rounded-br-sm px-4 py-3 max-w-[80%]">
-                        <p className="text-sm text-white">Hello! How do I order coffee?</p>
-                      </div>
+              <div className="relative mx-auto w-[280px]">
+                {/* Phone shell */}
+                <div className="relative rounded-[3rem] bg-gradient-to-b from-gray-700 via-gray-800 to-gray-900 p-[6px] shadow-[0_0_60px_rgba(0,0,0,0.5),0_0_120px_rgba(124,58,237,0.1)]">
+                  {/* Screen bezel */}
+                  <div className="rounded-[2.6rem] bg-black overflow-hidden">
+                    {/* Status bar + notch */}
+                    <div className="relative h-8 bg-gray-900 flex items-start justify-center">
+                      <div className="w-[90px] h-[22px] bg-black rounded-b-2xl" />
                     </div>
-                    <div className="flex justify-start">
-                      <div className="bg-gray-800 rounded-2xl rounded-bl-sm px-4 py-3 max-w-[80%]">
-                        <p className="text-sm text-gray-200">Great question! Try saying: &quot;I&apos;d like a latte, please.&quot;</p>
-                      </div>
-                    </div>
-                    <div className="flex justify-end">
-                      <div className="bg-purple-600/80 rounded-2xl rounded-br-sm px-4 py-3 max-w-[80%]">
-                        <div className="flex items-center gap-2">
-                          <Mic className="w-4 h-4 text-purple-200" />
-                          <div className="flex gap-0.5">
-                            {[...Array(12)].map((_, i) => (
-                              <div key={i} className="w-1 bg-purple-300/60 rounded-full" style={{ height: `${8 + Math.random() * 16}px` }} />
-                            ))}
+
+                    {/* Screenshot carousel */}
+                    <div className="relative aspect-[9/17] bg-white">
+                      <div
+                        ref={scrollRef}
+                        onScroll={handleScroll}
+                        className="flex h-full w-full snap-x snap-mandatory overflow-x-auto scrollbar-hide"
+                      >
+                        {screenshots.map((src, i) => (
+                          <div key={i} className="flex-none w-full h-full snap-center">
+                            {/* eslint-disable-next-line @next/next/no-img-element */}
+                            <img src={src} alt={`Speaking practice ${i + 1}`} className="w-full h-full object-cover" loading="eager" />
                           </div>
-                        </div>
+                        ))}
                       </div>
+
+                      {/* Arrows */}
+                      {currentIndex > 0 && (
+                        <button onClick={() => scrollToIndex(currentIndex - 1)} className="absolute left-1.5 top-1/2 -translate-y-1/2 w-7 h-7 bg-black/30 backdrop-blur rounded-full flex items-center justify-center text-white z-10">
+                          <ChevronLeft className="w-4 h-4" />
+                        </button>
+                      )}
+                      {currentIndex < screenshots.length - 1 && (
+                        <button onClick={() => scrollToIndex(currentIndex + 1)} className="absolute right-1.5 top-1/2 -translate-y-1/2 w-7 h-7 bg-black/30 backdrop-blur rounded-full flex items-center justify-center text-white z-10">
+                          <ChevronRight className="w-4 h-4" />
+                        </button>
+                      )}
                     </div>
-                    <div className="flex justify-start">
-                      <div className="bg-green-600/20 border border-green-500/30 rounded-2xl rounded-bl-sm px-4 py-3 max-w-[80%]">
-                        <p className="text-sm text-green-300">Excellent pronunciation! 95% accuracy</p>
-                      </div>
-                    </div>
-                    {/* Mic button */}
-                    <div className="flex justify-center pt-4">
-                      <div className="w-16 h-16 rounded-full bg-linear-to-t from-green-600 to-green-500 flex items-center justify-center shadow-lg shadow-green-500/20">
-                        <Mic className="w-7 h-7 text-white" />
-                      </div>
+
+                    {/* Home indicator */}
+                    <div className="h-6 bg-white flex justify-center items-center">
+                      <div className="w-24 h-1 bg-gray-300 rounded-full" />
                     </div>
                   </div>
                 </div>
+
+                {/* Side buttons (volume + power) */}
+                <div className="absolute left-[-2px] top-[100px] w-[3px] h-8 bg-gray-600 rounded-l-sm" />
+                <div className="absolute left-[-2px] top-[145px] w-[3px] h-12 bg-gray-600 rounded-l-sm" />
+                <div className="absolute left-[-2px] top-[170px] w-[3px] h-12 bg-gray-600 rounded-l-sm" />
+                <div className="absolute right-[-2px] top-[130px] w-[3px] h-16 bg-gray-600 rounded-r-sm" />
+
+                {/* Dots */}
+                {screenshots.length > 1 && (
+                  <div className="flex justify-center gap-1.5 mt-4">
+                    {screenshots.map((_, i) => (
+                      <button key={i} onClick={() => scrollToIndex(i)} className={`h-1.5 rounded-full transition-all ${i === currentIndex ? "bg-green-400 w-4" : "bg-gray-600 w-1.5"}`} />
+                    ))}
+                  </div>
+                )}
+
                 {/* Glow */}
-                <div className="absolute -inset-4 bg-purple-500/10 rounded-full blur-[60px] -z-10" aria-hidden="true" />
+                <div className="absolute -inset-8 bg-gradient-to-br from-purple-500/15 to-green-500/10 rounded-full blur-[80px] -z-10" aria-hidden="true" />
               </div>
             </div>
 
