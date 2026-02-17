@@ -51,7 +51,8 @@
     "progress": "Progress Tracking",
     "progressDesc": "See your speaking accuracy improve over time with detailed analytics.",
     "adaptive": "Adaptive AI Tutor",
-    "adaptiveDesc": "The AI adjusts difficulty and topics based on your strengths and weaknesses."
+    "adaptiveDesc": "The AI adjusts difficulty and topics based on your strengths and weaknesses.",
+    "tryNow": "Try Speaking Now"
   },
   "Testimonials": {
     "badge": "What Learners Say",

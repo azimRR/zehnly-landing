@@ -51,7 +51,8 @@
     "progress": "Taraqqiyotni kuzatish",
     "progressDesc": "Talaffuz aniqligingiz qanday yaxshilanayotganini batafsil tahlil bilan ko'ring.",
     "adaptive": "Moslashuvchan AI o'qituvchi",
-    "adaptiveDesc": "AI kuchli va zaif tomonlaringizga qarab qiyinlik va mavzularni moslashtiradi."
+    "adaptiveDesc": "AI kuchli va zaif tomonlaringizga qarab qiyinlik va mavzularni moslashtiradi.",
+    "tryNow": "Hozir sinab ko'ring"
   },
   "Testimonials": {
     "badge": "O'quvchilar fikri",

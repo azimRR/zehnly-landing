@@ -138,6 +138,20 @@ export default function SpeakingPractice() {
                   </div>
                 ))}
               </div>
+
+              {/* Try Now CTA */}
+              <div className="mt-10" data-aos="fade-left" data-aos-delay={700}>
+                <a
+                  href="https://fatiha.uz/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group inline-flex items-center gap-3 btn bg-linear-to-t from-green-600 to-green-500 bg-[length:100%_100%] bg-[bottom] text-white shadow-[inset_0px_1px_0px_0px_--theme(--color-white/.16),0_0_20px_rgba(74,222,128,0.2)] hover:bg-[length:100%_150%] hover:shadow-[inset_0px_1px_0px_0px_--theme(--color-white/.16),0_0_30px_rgba(74,222,128,0.35)] transition-shadow"
+                >
+                  <Mic className="w-4 h-4" />
+                  {t("tryNow")}
+                  <span className="tracking-normal text-white/50 transition-transform group-hover:translate-x-0.5">-&gt;</span>
+                </a>
+              </div>
             </div>
           </div>
         </div>
