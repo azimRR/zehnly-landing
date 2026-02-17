@@ -1,49 +1,120 @@
 {
   "Navbar": {
     "features": "Features",
-    "method": "Method",
-    "pricing": "Pricing",
-    "appStore": "App Store",
-    "googlePlay": "Google Play"
+    "howItWorks": "How It Works",
+    "pricing": "Pricing"
   },
   "Hero": {
-    "title": "The free, fun, and <green>effective</green> <gray>way to learn English!</gray>",
-    "trustedBy": "Trusted by 30k+ students"
+    "title": "Learn English Through Games That Actually Work",
+    "subtitle": "Zehnly AI turns English learning into an addictive gaming experience. 6 unique games, AI-powered difficulty, and speaking practice that gets you fluent faster.",
+    "downloadFree": "Download Free",
+    "googlePlay": "Google Play",
+    "trustedBy": "Trusted by 30,000+ learners"
   },
-  "Common": {
-    "loading": "Loading..."
+  "Stats": {
+    "learners": "Active Learners",
+    "googlePlay": "Google Play Downloads",
+    "appStore": "App Store Downloads",
+    "games": "Learning Games"
   },
-  "FeatureSection": {
+  "HowItWorks": {
+    "badge": "How It Works",
+    "title": "Start learning in 3 simple steps",
+    "subtitle": "Download, pick your level, and dive into addictive mini-games. Zehnly AI adapts to your skill and keeps you progressing every day.",
+    "step1Title": "Download & Sign Up",
+    "step1Desc": "Get Zehnly AI from App Store or Google Play. Create your free account in seconds and start your journey.",
+    "step2Title": "Choose Your Level",
+    "step2Desc": "Tell us if you're a beginner, intermediate, or advanced learner. Our AI adapts every game to your exact skill level.",
+    "step3Title": "Play & Level Up",
+    "step3Desc": "Dive into 6 addictive mini-games daily. Complete lessons, track your progress, and watch your English improve!"
+  },
+  "Features": {
+    "badge": "6 Addictive Games",
     "title": "Play your way to fluency",
-    "subtitle": "Forget boring textbooks. Zehnly uses addictive mini-games to make learning English feel like play.",
+    "subtitle": "Forget boring textbooks. Zehnly uses addictive mini-games to make learning English feel like play. Tap a game to preview it.",
+    "tapToPreview": "Tap to preview",
     "flashcards": { "title": "Flashcards", "description": "Master new vocabulary quickly with AI-powered flashcards tailored to your learning level." },
     "oddOneOut": { "title": "Odd One Out", "description": "Spot the word that doesn't belong. Sharpen your logic and vocabulary skills instantly." },
     "connections": { "title": "Connections", "description": "Find groups of four related items. Spot the patterns and make the connections!" },
     "fourPics": { "title": "4 Pics 1 Word", "description": "Find the word that connects four images. Train your brain to think conceptually in English." },
-    "words": { "title": "Squares", "description": "Discover hidden words by analyzing colorful letter tiles and patterns." },
+    "squares": { "title": "Squares", "description": "Discover hidden words by analyzing colorful letter tiles and patterns." },
     "wordBattle": { "title": "Word Battle", "description": "Face off against opponents in thrilling 1v1 battles of speed and vocabulary." }
   },
+  "Speaking": {
+    "badge": "Speaking Practice",
+    "title": "Practice speaking with AI",
+    "subtitle": "Our AI-powered speaking practice helps you build confidence in real conversations. Get instant feedback on pronunciation, fluency, and grammar.",
+    "pronunciation": "Pronunciation Feedback",
+    "pronunciationDesc": "Get instant AI feedback on how you pronounce every word and sentence.",
+    "conversation": "Conversation Scenarios",
+    "conversationDesc": "Practice real-world dialogues: ordering food, job interviews, travel, and more.",
+    "progress": "Progress Tracking",
+    "progressDesc": "See your speaking accuracy improve over time with detailed analytics.",
+    "adaptive": "Adaptive AI Tutor",
+    "adaptiveDesc": "The AI adjusts difficulty and topics based on your strengths and weaknesses."
+  },
+  "Testimonials": {
+    "badge": "What Learners Say",
+    "title": "Loved by 30,000+ students",
+    "subtitle": "Join thousands of English learners who are already improving their skills with Zehnly AI."
+  },
+  "Pricing": {
+    "badge": "Simple Pricing",
+    "title": "Start free, upgrade when ready",
+    "subtitle": "No hidden fees. Cancel anytime. All plans include access to every game.",
+    "free": "Free",
+    "freePrice": "$0",
+    "freePeriod": "forever",
+    "freeDesc": "Try Zehnly AI risk-free",
+    "freeFeature1": "Learn up to 200 words",
+    "freeFeature2": "Access to all 6 games",
+    "freeFeature3": "Basic speaking practice",
+    "freeFeature4": "Perfect for getting started",
+    "freeCta": "Get Started Free",
+    "monthly": "Monthly",
+    "monthlyPrice": "$5",
+    "monthlyPeriod": "/month",
+    "monthlyDesc": "Full access, no limits",
+    "monthlyFeature1": "Unlimited vocabulary",
+    "monthlyFeature2": "Full access to all games",
+    "monthlyFeature3": "AI-powered adaptive difficulty",
+    "monthlyFeature4": "Advanced speaking practice",
+    "monthlyFeature5": "Detailed progress tracking",
+    "monthlyCta": "Start Monthly",
+    "yearly": "Yearly",
+    "yearlyPrice": "$39",
+    "yearlyPeriod": "/year",
+    "yearlyDesc": "Best value — save $21",
+    "yearlyFeature1": "Everything in Monthly",
+    "yearlyFeature2": "Only $3.25/month",
+    "yearlyFeature3": "Priority new features",
+    "yearlyFeature4": "Learn without limits",
+    "yearlyFeature5": "Cancel anytime",
+    "yearlyCta": "Start Yearly",
+    "bestValue": "Best Value"
+  },
+  "Cta": {
+    "title": "Start your English journey today",
+    "subtitle": "Join 30,000+ learners who are already improving their English with Zehnly AI. Download free and start playing.",
+    "appStore": "App Store",
+    "googlePlay": "Google Play"
+  },
   "Footer": {
-    "levelComplete": "Level Complete!",
-    "journeyPart1": "You've reached the bottom.",
-    "journeyPart2": "But your journey is just starting.",
-    "menu": "MENU",
+    "product": "Product",
     "features": "Features",
+    "pricing": "Pricing",
+    "howItWorks": "How It Works",
+    "speaking": "Speaking Practice",
+    "company": "Company",
+    "aboutUs": "About Us",
     "contact": "Contact",
-    "play": "Play",
-    "mysteryBox": "Mystery Box",
-    "promo": "Promo: FREE7",
-    "contactUs": "Contact Us",
-    "emailPlaceholder": "Your Email",
-    "messagePlaceholder": "Message...",
-    "sendMessage": "Send Message",
-    "readyForNextLevel": "Ready for Next Level?",
-    "getTheApp": "Get the App",
-    "copyright": "© 2025 Zehnly AI • Game Over • Try Again?",
-    "about": "About",
-    "privacyPolicy": "Privacy Policy",
-    "termsOfService": "Terms of Service",
-    "cookiePolicy": "Cookie Policy",
-    "allRightsReserved": "All rights reserved."
+    "blog": "Blog",
+    "legal": "Legal",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "cookies": "Cookie Policy",
+    "download": "Download",
+    "copyright": "Zehnly AI",
+    "termsShort": "Terms"
   }
 }
