@@ -1,10 +1,11 @@
 "use client";
 
 import Spotlight from "@/components/Spotlight";
-import Image from "next/image";
-import heroImage from "@/assets/hero-bear-tr.png";
+import { useTranslations } from "next-intl";
 
 export default function HowItWorks() {
+  const t = useTranslations("HowItWorks");
+
   return (
     <section id="how-it-works">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
@@ -13,14 +14,14 @@ export default function HowItWorks() {
           <div className="mx-auto max-w-3xl pb-12 text-center md:pb-20">
             <div className="inline-flex items-center gap-3 pb-3 before:h-px before:w-8 before:bg-linear-to-r before:from-transparent before:to-purple-200/50 after:h-px after:w-8 after:bg-linear-to-l after:from-transparent after:to-purple-200/50">
               <span className="inline-flex bg-linear-to-r from-purple-500 to-purple-200 bg-clip-text text-transparent">
-                How It Works
+                {t("badge")}
               </span>
             </div>
             <h2 className="animate-[gradient_6s_linear_infinite] bg-[linear-gradient(to_right,var(--color-gray-200),var(--color-purple-200),var(--color-gray-50),var(--color-purple-300),var(--color-gray-200))] bg-[length:200%_auto] bg-clip-text pb-4 font-jakarta text-3xl font-semibold text-transparent md:text-4xl">
-              Start learning in 3 simple steps
+              {t("title")}
             </h2>
             <p className="text-lg text-purple-200/65">
-              Download, pick your level, and dive into addictive mini-games. Zehnly AI adapts to your skill and keeps you progressing every day.
+              {t("subtitle")}
             </p>
           </div>
 
@@ -40,9 +41,9 @@ export default function HowItWorks() {
                       <span className="relative z-10 bg-linear-to-r from-green-500 to-green-200 bg-clip-text text-transparent">Step 1</span>
                     </span>
                   </div>
-                  <h3 className="mb-2 font-jakarta text-lg font-semibold text-gray-200">Download & Sign Up</h3>
+                  <h3 className="mb-2 font-jakarta text-lg font-semibold text-gray-200">{t("step1Title")}</h3>
                   <p className="text-purple-200/65">
-                    Get Zehnly AI from App Store or Google Play. Create your free account in seconds and start your journey.
+                    {t("step1Desc")}
                   </p>
                 </div>
               </div>
@@ -62,9 +63,9 @@ export default function HowItWorks() {
                       <span className="relative z-10 bg-linear-to-r from-purple-500 to-purple-200 bg-clip-text text-transparent">Step 2</span>
                     </span>
                   </div>
-                  <h3 className="mb-2 font-jakarta text-lg font-semibold text-gray-200">Choose Your Level</h3>
+                  <h3 className="mb-2 font-jakarta text-lg font-semibold text-gray-200">{t("step2Title")}</h3>
                   <p className="text-purple-200/65">
-                    Tell us if you're a beginner, intermediate, or advanced learner. Our AI adapts every game to your exact skill level.
+                    {t("step2Desc")}
                   </p>
                 </div>
               </div>
@@ -84,9 +85,9 @@ export default function HowItWorks() {
                       <span className="relative z-10 bg-linear-to-r from-yellow-500 to-yellow-200 bg-clip-text text-transparent">Step 3</span>
                     </span>
                   </div>
-                  <h3 className="mb-2 font-jakarta text-lg font-semibold text-gray-200">Play & Level Up</h3>
+                  <h3 className="mb-2 font-jakarta text-lg font-semibold text-gray-200">{t("step3Title")}</h3>
                   <p className="text-purple-200/65">
-                    Dive into 6 addictive mini-games daily. Complete lessons, track your progress, and watch your English improve!
+                    {t("step3Desc")}
                   </p>
                 </div>
               </div>

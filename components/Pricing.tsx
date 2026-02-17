@@ -1,34 +1,39 @@
+"use client";
+
 import { Check } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 export default function Pricing() {
+  const t = useTranslations("Pricing");
+
   const plans = [
     {
-      name: "Free",
-      price: "$0",
-      period: "forever",
-      description: "Try Zehnly AI risk-free",
-      features: ["Learn up to 200 words", "Access to all 6 games", "Basic speaking practice", "Perfect for getting started"],
-      cta: "Get Started Free",
+      name: t("free"),
+      price: t("freePrice"),
+      period: t("freePeriod"),
+      description: t("freeDesc"),
+      features: [t("freeFeature1"), t("freeFeature2"), t("freeFeature3"), t("freeFeature4")],
+      cta: t("freeCta"),
       href: "https://play.google.com/store/apps/details?id=ai.zehnly&pcampaignid=web_share",
       highlighted: false,
     },
     {
-      name: "Monthly",
-      price: "$5",
-      period: "/month",
-      description: "Full access, no limits",
-      features: ["Unlimited vocabulary", "Full access to all games", "AI-powered adaptive difficulty", "Advanced speaking practice", "Detailed progress tracking"],
-      cta: "Start Monthly",
+      name: t("monthly"),
+      price: t("monthlyPrice"),
+      period: t("monthlyPeriod"),
+      description: t("monthlyDesc"),
+      features: [t("monthlyFeature1"), t("monthlyFeature2"), t("monthlyFeature3"), t("monthlyFeature4"), t("monthlyFeature5")],
+      cta: t("monthlyCta"),
       href: "https://play.google.com/store/apps/details?id=ai.zehnly&pcampaignid=web_share",
       highlighted: false,
     },
     {
-      name: "Yearly",
-      price: "$39",
-      period: "/year",
-      description: "Best value \u2014 save $21",
-      features: ["Everything in Monthly", "Only $3.25/month", "Priority new features", "Learn without limits", "Cancel anytime"],
-      cta: "Start Yearly",
+      name: t("yearly"),
+      price: t("yearlyPrice"),
+      period: t("yearlyPeriod"),
+      description: t("yearlyDesc"),
+      features: [t("yearlyFeature1"), t("yearlyFeature2"), t("yearlyFeature3"), t("yearlyFeature4"), t("yearlyFeature5")],
+      cta: t("yearlyCta"),
       href: "https://play.google.com/store/apps/details?id=ai.zehnly&pcampaignid=web_share",
       highlighted: true,
     },
@@ -42,14 +47,14 @@ export default function Pricing() {
           <div className="mx-auto max-w-3xl pb-12 text-center md:pb-16">
             <div className="inline-flex items-center gap-3 pb-3 before:h-px before:w-8 before:bg-linear-to-r before:from-transparent before:to-purple-200/50 after:h-px after:w-8 after:bg-linear-to-l after:from-transparent after:to-purple-200/50">
               <span className="inline-flex bg-linear-to-r from-purple-500 to-purple-200 bg-clip-text text-transparent">
-                Simple Pricing
+                {t("badge")}
               </span>
             </div>
             <h2 className="animate-[gradient_6s_linear_infinite] bg-[linear-gradient(to_right,var(--color-gray-200),var(--color-purple-200),var(--color-gray-50),var(--color-purple-300),var(--color-gray-200))] bg-[length:200%_auto] bg-clip-text pb-4 font-jakarta text-3xl font-semibold text-transparent md:text-4xl">
-              Start free, upgrade when ready
+              {t("title")}
             </h2>
             <p className="text-lg text-purple-200/65">
-              No hidden fees. Cancel anytime. All plans include access to every game.
+              {t("subtitle")}
             </p>
           </div>
 
@@ -66,7 +71,7 @@ export default function Pricing() {
                   {plan.highlighted && (
                     <div className="absolute -top-3 left-1/2 -translate-x-1/2">
                       <span className="inline-flex bg-linear-to-r from-green-500 to-green-400 text-gray-950 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
-                        Best Value
+                        {t("bestValue")}
                       </span>
                     </div>
                   )}

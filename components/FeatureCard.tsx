@@ -12,6 +12,7 @@ interface FeatureCardProps {
   color: string;
   delay?: number;
   lightImages?: string[];
+  tapToPreview?: string;
 }
 
 const colorMap: Record<string, { icon: string; bg: string }> = {
@@ -28,6 +29,7 @@ export const FeatureCard = ({
   color,
   delay = 0,
   lightImages = [],
+  tapToPreview = "Tap to preview",
 }: FeatureCardProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -90,7 +92,7 @@ export const FeatureCard = ({
         <p className="text-purple-200/65">{description}</p>
         {lightImages.length > 0 && (
           <span className="inline-flex items-center gap-1 mt-3 text-xs text-purple-400/60 group-hover:text-purple-400 transition-colors">
-            Tap to preview
+            {tapToPreview}
             <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" /></svg>
           </span>
         )}

@@ -2,6 +2,7 @@
 
 import { Mic, MessageCircle, BarChart3, Brain, ChevronLeft, ChevronRight } from "lucide-react";
 import { useState, useRef, useCallback } from "react";
+import { useTranslations } from "next-intl";
 
 const screenshots = [
   "/assets/FeaturesEx/FlashCards(light)/Pronunciation-1.jpg",
@@ -12,12 +13,13 @@ const screenshots = [
 export default function SpeakingPractice() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const scrollRef = useRef<HTMLDivElement>(null);
+  const t = useTranslations("Speaking");
 
   const features = [
-    { icon: Mic, title: "Pronunciation Feedback", description: "Get instant AI feedback on how you pronounce every word and sentence." },
-    { icon: MessageCircle, title: "Conversation Scenarios", description: "Practice real-world dialogues: ordering food, job interviews, travel, and more." },
-    { icon: BarChart3, title: "Progress Tracking", description: "See your speaking accuracy improve over time with detailed analytics." },
-    { icon: Brain, title: "Adaptive AI Tutor", description: "The AI adjusts difficulty and topics based on your strengths and weaknesses." },
+    { icon: Mic, title: t("pronunciation"), description: t("pronunciationDesc") },
+    { icon: MessageCircle, title: t("conversation"), description: t("conversationDesc") },
+    { icon: BarChart3, title: t("progress"), description: t("progressDesc") },
+    { icon: Brain, title: t("adaptive"), description: t("adaptiveDesc") },
   ];
 
   const scrollToIndex = useCallback((index: number) => {
@@ -113,14 +115,14 @@ export default function SpeakingPractice() {
             <div className="flex-1">
               <div className="inline-flex items-center gap-3 pb-3 before:h-px before:w-8 before:bg-linear-to-r before:from-transparent before:to-green-200/50 after:h-px after:w-8 after:bg-linear-to-l after:from-transparent after:to-green-200/50" data-aos="fade-left">
                 <span className="inline-flex bg-linear-to-r from-green-500 to-green-200 bg-clip-text text-transparent">
-                  Speaking Practice
+                  {t("badge")}
                 </span>
               </div>
               <h2 className="animate-[gradient_6s_linear_infinite] bg-[linear-gradient(to_right,var(--color-gray-200),var(--color-green-200),var(--color-gray-50),var(--color-green-300),var(--color-gray-200))] bg-[length:200%_auto] bg-clip-text pb-4 font-jakarta text-3xl font-semibold text-transparent md:text-4xl" data-aos="fade-left" data-aos-delay={100}>
-                Practice speaking with AI
+                {t("title")}
               </h2>
               <p className="text-lg text-purple-200/65 mb-8" data-aos="fade-left" data-aos-delay={200}>
-                Our AI-powered speaking practice helps you build confidence in real conversations. Get instant feedback on pronunciation, fluency, and grammar.
+                {t("subtitle")}
               </p>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">

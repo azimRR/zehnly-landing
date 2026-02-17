@@ -4,10 +4,12 @@ import { Link } from "@/i18n/routing";
 import Image from "next/image";
 import logo from "@/assets/Logo.jpg";
 import { useState, useEffect } from "react";
+import { useTranslations } from "next-intl";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 
 export const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const t = useTranslations("Navbar");
 
   useEffect(() => {
     const handleResize = () => {
@@ -43,9 +45,9 @@ export const Navbar = () => {
 
           {/* Desktop nav */}
           <ul className="relative z-10 hidden md:flex flex-1 items-center justify-end gap-3">
-            <li><a className="text-sm text-gray-300 hover:text-white transition" href="#features">Features</a></li>
-            <li><a className="text-sm text-gray-300 hover:text-white transition" href="#how-it-works">How It Works</a></li>
-            <li><a className="text-sm text-gray-300 hover:text-white transition" href="#pricing">Pricing</a></li>
+            <li><a className="text-sm text-gray-300 hover:text-white transition" href="#features">{t("features")}</a></li>
+            <li><a className="text-sm text-gray-300 hover:text-white transition" href="#how-it-works">{t("howItWorks")}</a></li>
+            <li><a className="text-sm text-gray-300 hover:text-white transition" href="#pricing">{t("pricing")}</a></li>
             <li>
               <LanguageSwitcher />
             </li>

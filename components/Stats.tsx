@@ -1,9 +1,15 @@
+"use client";
+
+import { useTranslations } from "next-intl";
+
 export default function Stats() {
+  const t = useTranslations("Stats");
+
   const stats = [
-    { value: "30K+", label: "Active Learners" },
-    { value: "25K+", label: "Google Play Downloads" },
-    { value: "5K+", label: "App Store Downloads" },
-    { value: "6", label: "Learning Games" },
+    { value: "30K+", label: t("learners") },
+    { value: "25K+", label: t("googlePlay") },
+    { value: "5K+", label: t("appStore") },
+    { value: "6", label: t("games") },
   ];
 
   return (
