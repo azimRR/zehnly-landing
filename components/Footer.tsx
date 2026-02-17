@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
 
 export const Footer = () => {
   return (
@@ -24,18 +24,18 @@ export const Footer = () => {
           <div className="space-y-2">
             <h3 className="text-sm font-medium text-gray-200">Company</h3>
             <ul className="space-y-2 text-sm">
-              <li><Link className="text-purple-200/65 transition hover:text-purple-400" href="#">About Us</Link></li>
-              <li><Link className="text-purple-200/65 transition hover:text-purple-400" href="#">Contact</Link></li>
-              <li><Link className="text-purple-200/65 transition hover:text-purple-400" href="#">Blog</Link></li>
+              <li><Link className="text-purple-200/65 transition hover:text-purple-400" href="/about">About Us</Link></li>
+              <li><Link className="text-purple-200/65 transition hover:text-purple-400" href="/contact">Contact</Link></li>
+              <li><Link className="text-purple-200/65 transition hover:text-purple-400" href="/blog">Blog</Link></li>
             </ul>
           </div>
           {/* Legal */}
           <div className="space-y-2">
             <h3 className="text-sm font-medium text-gray-200">Legal</h3>
             <ul className="space-y-2 text-sm">
-              <li><Link className="text-purple-200/65 transition hover:text-purple-400" href="#">Privacy Policy</Link></li>
-              <li><Link className="text-purple-200/65 transition hover:text-purple-400" href="#">Terms of Service</Link></li>
-              <li><Link className="text-purple-200/65 transition hover:text-purple-400" href="#">Cookie Policy</Link></li>
+              <li><Link className="text-purple-200/65 transition hover:text-purple-400" href="/privacy">Privacy Policy</Link></li>
+              <li><Link className="text-purple-200/65 transition hover:text-purple-400" href="/terms">Terms of Service</Link></li>
+              <li><Link className="text-purple-200/65 transition hover:text-purple-400" href="/cookies">Cookie Policy</Link></li>
             </ul>
           </div>
           {/* Download */}
@@ -58,7 +58,7 @@ export const Footer = () => {
               <p className="mb-3 text-purple-200/65">
                 &copy; {new Date().getFullYear()} Zehnly AI
                 <span className="text-gray-700"> &middot; </span>
-                <Link className="text-purple-200/65 transition hover:text-purple-400" href="#">Terms</Link>
+                <Link className="text-purple-200/65 transition hover:text-purple-400" href="/terms">Terms</Link>
               </p>
               <ul className="inline-flex gap-1">
                 <li>
