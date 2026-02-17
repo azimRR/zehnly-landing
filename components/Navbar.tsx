@@ -22,7 +22,7 @@ export const Navbar = () => {
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="relative flex h-14 items-center justify-between gap-3 rounded-2xl bg-gray-900/90 px-3 before:pointer-events-none before:absolute before:inset-0 before:rounded-[inherit] before:border before:border-transparent before:[background:linear-gradient(to_right,var(--color-gray-800),var(--color-gray-700),var(--color-gray-800))_border-box] before:[mask-composite:exclude_!important] before:[mask:linear-gradient(white_0_0)_padding-box,_linear-gradient(white_0_0)] after:absolute after:inset-0 after:-z-10 after:backdrop-blur-xs">
           {/* Logo */}
-          <div className="flex flex-1 items-center">
+          <div className="relative z-10 flex flex-1 items-center">
             <Link href="/" className="inline-flex shrink-0" aria-label="Zehnly">
               <Image src={logo} alt="Zehnly" className="h-9 w-auto object-contain rounded-lg" priority />
             </Link>
@@ -30,7 +30,7 @@ export const Navbar = () => {
 
           {/* Mobile hamburger */}
           <button
-            className="md:hidden p-2 text-gray-400"
+            className="relative z-10 md:hidden p-2 text-gray-400"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle menu"
           >
@@ -42,7 +42,7 @@ export const Navbar = () => {
           </button>
 
           {/* Desktop nav */}
-          <ul className="hidden md:flex flex-1 items-center justify-end gap-3">
+          <ul className="relative z-10 hidden md:flex flex-1 items-center justify-end gap-3">
             <li><a className="text-sm text-gray-300 hover:text-white transition" href="#features">Features</a></li>
             <li><a className="text-sm text-gray-300 hover:text-white transition" href="#how-it-works">How It Works</a></li>
             <li><a className="text-sm text-gray-300 hover:text-white transition" href="#pricing">Pricing</a></li>
@@ -56,8 +56,10 @@ export const Navbar = () => {
                 rel="noopener noreferrer"
                 className="btn-sm relative bg-linear-to-b from-gray-800 to-gray-800/60 bg-[length:100%_100%] bg-[bottom] py-[5px] text-gray-300 before:pointer-events-none before:absolute before:inset-0 before:rounded-[inherit] before:border before:border-transparent before:[background:linear-gradient(to_right,var(--color-gray-800),var(--color-gray-700),var(--color-gray-800))_border-box] before:[mask-composite:exclude_!important] before:[mask:linear-gradient(white_0_0)_padding-box,_linear-gradient(white_0_0)] hover:bg-[length:100%_150%]"
               >
-                <svg viewBox="0 0 384 512" fill="currentColor" className="w-3.5 h-3.5 mr-1.5"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5c0 66.2 23.9 122.2 52.4 167.5 20.3 32.2 47.8 71.8 77.3 71.8 30.3 0 42.7-16.4 82.3-16.4 46.3 0 52.8 14.1 82.8 14.1 69.7-11.9 95.7-93.7 95.7-93.7-1 .1-47.8-21.3-48.4-53.1zM245.9 76.8c12.4-19.1 27.6-35 50.7-35 8.1 43-22.1 86.8-50.7 86.8-9.4-46.3 12.4-70.9 12.4-70.9z"/></svg>
-                App Store
+                <span className="relative z-10 inline-flex items-center">
+                  <svg viewBox="0 0 384 512" fill="currentColor" className="w-3.5 h-3.5 mr-1.5"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5c0 66.2 23.9 122.2 52.4 167.5 20.3 32.2 47.8 71.8 77.3 71.8 30.3 0 42.7-16.4 82.3-16.4 46.3 0 52.8 14.1 82.8 14.1 69.7-11.9 95.7-93.7 95.7-93.7-1 .1-47.8-21.3-48.4-53.1zM245.9 76.8c12.4-19.1 27.6-35 50.7-35 8.1 43-22.1 86.8-50.7 86.8-9.4-46.3 12.4-70.9 12.4-70.9z"/></svg>
+                  App Store
+                </span>
               </a>
             </li>
             <li>

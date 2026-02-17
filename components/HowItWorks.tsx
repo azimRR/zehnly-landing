@@ -37,7 +37,7 @@ export default function HowItWorks() {
                 <div className="p-6">
                   <div className="mb-3">
                     <span className="btn-sm relative rounded-full bg-gray-800/40 px-2.5 py-0.5 text-xs font-normal before:pointer-events-none before:absolute before:inset-0 before:rounded-[inherit] before:border before:border-transparent before:[background:linear-gradient(to_bottom,--theme(--color-gray-700/.15),--theme(--color-gray-700/.5))_border-box] before:[mask-composite:exclude_!important] before:[mask:linear-gradient(white_0_0)_padding-box,_linear-gradient(white_0_0)]">
-                      <span className="bg-linear-to-r from-green-500 to-green-200 bg-clip-text text-transparent">Step 1</span>
+                      <span className="relative z-10 bg-linear-to-r from-green-500 to-green-200 bg-clip-text text-transparent">Step 1</span>
                     </span>
                   </div>
                   <h3 className="mb-2 font-jakarta text-lg font-semibold text-gray-200">Download & Sign Up</h3>
@@ -59,7 +59,7 @@ export default function HowItWorks() {
                 <div className="p-6">
                   <div className="mb-3">
                     <span className="btn-sm relative rounded-full bg-gray-800/40 px-2.5 py-0.5 text-xs font-normal before:pointer-events-none before:absolute before:inset-0 before:rounded-[inherit] before:border before:border-transparent before:[background:linear-gradient(to_bottom,--theme(--color-gray-700/.15),--theme(--color-gray-700/.5))_border-box] before:[mask-composite:exclude_!important] before:[mask:linear-gradient(white_0_0)_padding-box,_linear-gradient(white_0_0)]">
-                      <span className="bg-linear-to-r from-purple-500 to-purple-200 bg-clip-text text-transparent">Step 2</span>
+                      <span className="relative z-10 bg-linear-to-r from-purple-500 to-purple-200 bg-clip-text text-transparent">Step 2</span>
                     </span>
                   </div>
                   <h3 className="mb-2 font-jakarta text-lg font-semibold text-gray-200">Choose Your Level</h3>
@@ -81,7 +81,7 @@ export default function HowItWorks() {
                 <div className="p-6">
                   <div className="mb-3">
                     <span className="btn-sm relative rounded-full bg-gray-800/40 px-2.5 py-0.5 text-xs font-normal before:pointer-events-none before:absolute before:inset-0 before:rounded-[inherit] before:border before:border-transparent before:[background:linear-gradient(to_bottom,--theme(--color-gray-700/.15),--theme(--color-gray-700/.5))_border-box] before:[mask-composite:exclude_!important] before:[mask:linear-gradient(white_0_0)_padding-box,_linear-gradient(white_0_0)]">
-                      <span className="bg-linear-to-r from-yellow-500 to-yellow-200 bg-clip-text text-transparent">Step 3</span>
+                      <span className="relative z-10 bg-linear-to-r from-yellow-500 to-yellow-200 bg-clip-text text-transparent">Step 3</span>
                     </span>
                   </div>
                   <h3 className="mb-2 font-jakarta text-lg font-semibold text-gray-200">Play & Level Up</h3>

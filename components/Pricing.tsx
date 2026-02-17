@@ -88,7 +88,7 @@ export default function Pricing() {
                         : "bg-linear-to-b from-gray-800 to-gray-800/60 text-gray-300 before:pointer-events-none before:absolute before:inset-0 before:rounded-[inherit] before:border before:border-transparent before:[background:linear-gradient(to_right,var(--color-gray-800),var(--color-gray-700),var(--color-gray-800))_border-box] before:[mask-composite:exclude_!important] before:[mask:linear-gradient(white_0_0)_padding-box,_linear-gradient(white_0_0)] hover:bg-[length:100%_150%] relative"
                     }`}
                   >
-                    {plan.cta}
+                    <span className="relative z-10">{plan.cta}</span>
                   </a>
                   <ul className="space-y-3">
                     {plan.features.map((feature, j) => (
