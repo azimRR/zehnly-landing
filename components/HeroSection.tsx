@@ -2,13 +2,14 @@
 
 import Image from "next/image";
 import heroImage from "@/assets/hero-bear-tr.png";
-import avatarPanda from "@/assets/avatar-panda.png";
-import avatarFox from "@/assets/avatar-fox.png";
-import avatarBunny from "@/assets/avatar-bunny.png";
-import avatarCat from "@/assets/avatar-cat.png";
 import { useTranslations } from "next-intl";
 
-const avatars = [avatarPanda, avatarFox, avatarBunny, avatarCat];
+const avatars = [
+  "https://i.pravatar.cc/150?img=32",
+  "https://i.pravatar.cc/150?img=47",
+  "https://i.pravatar.cc/150?img=12",
+  "https://i.pravatar.cc/150?img=25",
+];
 
 export const HeroSection = () => {
   const t = useTranslations("Hero");
@@ -65,9 +66,10 @@ export const HeroSection = () => {
               {/* Social proof */}
               <div className="mt-10 flex items-center justify-center lg:justify-start gap-4" data-aos="fade-up" data-aos-delay={600}>
                 <div className="flex -space-x-3">
-                  {avatars.map((avatar, i) => (
+                  {avatars.map((src, i) => (
                     <div key={i} className="relative w-9 h-9 rounded-full border-2 border-gray-950 bg-gray-800 overflow-hidden">
-                      <Image src={avatar} alt={`User ${i + 1}`} fill className="object-cover" />
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src={src} alt={`User ${i + 1}`} className="w-full h-full object-cover" />
                     </div>
                   ))}
                 </div>
