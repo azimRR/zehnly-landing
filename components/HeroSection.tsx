@@ -77,14 +77,13 @@ export const HeroSection = () => {
               </div>
             </div>
 
-            {/* Mascot */}
-            <div className="flex-1 max-w-sm lg:max-w-md relative" data-aos="fade-up" data-aos-delay={300}>
-              {/* Glow behind mascot */}
+            {/* Mascot - hidden temporarily */}
+            {/* <div className="flex-1 max-w-sm lg:max-w-md relative" data-aos="fade-up" data-aos-delay={300}>
               <div className="absolute inset-0 bg-purple-500/15 rounded-full blur-[80px]" aria-hidden="true" />
               <div className="relative w-full aspect-square">
                 <Image src={heroImage} alt="Zehnly AI Mascot" fill className="object-contain drop-shadow-2xl" priority />
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
