@@ -1,30 +1,67 @@
 @import "tailwindcss";
 
-@custom-variant dark (&:where(.dark, .dark *));
-
 @theme {
-  --color-zehnly-violet: #6c42bf;
-  --color-zehnly-violet-dark: #5b37a3;
-  --color-zehnly-violet-light: #8460d1;
-  --color-zehnly-green: #58cc02;
-  --color-zehnly-green-dark: #46a302;
-  --color-zehnly-green-light: #6ce014;
-  --color-zehnly-yellow: #ffc800;
-  --color-zehnly-red: #ff4b4b;
+  --font-inter: var(--font-inter), sans-serif;
+  --font-jakarta: var(--font-jakarta), sans-serif;
 
-  --color-dark-bg: #0a0a0b;
-  --color-dark-surface: #161618;
-  --color-dark-surface-hover: #1e1e21;
-  --color-dark-text: #fafafa;
-  --color-dark-text-muted: #a1a1aa;
-  --color-dark-text-subtle: #71717a;
-  --color-dark-border: #27272a;
+  --text-xs: 0.8125rem;
+  --text-xs--line-height: 1.5384;
+  --text-sm: 0.875rem;
+  --text-sm--line-height: 1.5715;
+  --text-base: 0.9375rem;
+  --text-base--line-height: 1.5333;
+  --text-base--letter-spacing: -0.0125em;
+  --text-lg: 1.125rem;
+  --text-lg--line-height: 1.5;
+  --text-lg--letter-spacing: -0.0125em;
+  --text-xl: 1.25rem;
+  --text-xl--line-height: 1.5;
+  --text-xl--letter-spacing: -0.0125em;
+  --text-2xl: 1.5rem;
+  --text-2xl--line-height: 1.415;
+  --text-2xl--letter-spacing: -0.0268em;
+  --text-3xl: 1.75rem;
+  --text-3xl--line-height: 1.3571;
+  --text-3xl--letter-spacing: -0.0268em;
+  --text-4xl: 2.5rem;
+  --text-4xl--line-height: 1.1;
+  --text-4xl--letter-spacing: -0.0268em;
+  --text-5xl: 3.5rem;
+  --text-5xl--line-height: 1;
+  --text-5xl--letter-spacing: -0.0268em;
 
-  --font-sans:
-    var(--font-jakarta), ui-sans-serif, system-ui, sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --animate-gradient: gradient 6s linear infinite;
+
+  @keyframes gradient {
+    to {
+      background-position: 200% center;
+    }
+  }
 }
 
 html {
   scroll-behavior: smooth;
+}
+
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
+}
+
+@layer components {
+  .btn,
+  .btn-sm {
+    @apply inline-flex items-center justify-center whitespace-nowrap rounded-lg text-sm font-medium transition-all;
+  }
+  .btn {
+    @apply px-4 py-[11px];
+  }
+  .btn-sm {
+    @apply px-3 py-[7px];
+  }
 }

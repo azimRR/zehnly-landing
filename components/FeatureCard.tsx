@@ -1,78 +1,75 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { LucideIcon, X } from "lucide-react";
 import Image from "next/image";
-import { useTheme } from "next-themes";
 
 interface FeatureCardProps {
   id: number;
   title: string;
   description: string;
   icon: LucideIcon;
-  image?: any;
-  imageDark?: any;
   color: string;
   delay?: number;
   lightImages?: string[];
-  darkImages?: string[];
 }
 
-const colorMap: Record<string, { bg: string; text: string }> = {
-  'bg-zehnly-yellow': { bg: 'bg-amber-100 dark:bg-amber-900/20', text: 'text-amber-600 dark:text-amber-400' },
-  'bg-zehnly-violet': { bg: 'bg-violet-100 dark:bg-violet-900/20', text: 'text-violet-600 dark:text-violet-400' },
-  'bg-zehnly-red': { bg: 'bg-rose-100 dark:bg-rose-900/20', text: 'text-rose-500 dark:text-rose-400' },
-  'bg-zehnly-green': { bg: 'bg-emerald-100 dark:bg-emerald-900/20', text: 'text-emerald-600 dark:text-emerald-400' },
+const colorMap: Record<string, { icon: string; bg: string }> = {
+  yellow: { icon: "text-yellow-400", bg: "bg-yellow-500/10" },
+  purple: { icon: "text-purple-400", bg: "bg-purple-500/10" },
+  red: { icon: "text-red-400", bg: "bg-red-500/10" },
+  green: { icon: "text-green-400", bg: "bg-green-500/10" },
 };
 
 export const FeatureCard = ({
-  id,
   title,
   description,
   icon: Icon,
   color,
-  lightImages = [],
-  darkImages = [],
   delay = 0,
+  lightImages = [],
 }: FeatureCardProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const { resolvedTheme } = useTheme();
-
-  const currentThemeImages = resolvedTheme === 'dark' && darkImages.length > 0 ? darkImages : lightImages;
-  const imagesToDisplay = currentThemeImages.length > 0 ? currentThemeImages : [];
 
   useEffect(() => {
-    if (!isOpen || imagesToDisplay.length <= 1) return;
+    if (!isOpen || lightImages.length <= 1) return;
     const interval = setInterval(() => {
-      setCurrentImageIndex((prev) => (prev + 1) % imagesToDisplay.length);
+      setCurrentImageIndex((prev) => (prev + 1) % lightImages.length);
     }, 3000);
     return () => clearInterval(interval);
-  }, [isOpen, imagesToDisplay.length]);
+  }, [isOpen, lightImages.length]);
 
-  const colors = colorMap[color] || colorMap['bg-zehnly-violet'];
+  const colors = colorMap[color] || colorMap.purple;
 
   return (
     <>
-      <motion.div
-        initial={{ opacity: 0, y: 16 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-40px" }}
-        transition={{ duration: 0.4, delay: delay * 0.5, ease: "easeOut" }}
-        onClick={() => { setIsOpen(true); setCurrentImageIndex(0); }}
-        className="bg-white dark:bg-dark-surface rounded-2xl border border-zinc-200/80 dark:border-dark-border p-6 cursor-pointer group hover:border-zinc-300 dark:hover:border-zinc-600 transition-colors"
+      <article
+        className="cursor-pointer group"
+        data-aos="fade-up"
+        data-aos-delay={delay * 600}
+        onClick={() => {
+          if (lightImages.length > 0) {
+            setIsOpen(true);
+            setCurrentImageIndex(0);
+          }
+        }}
       >
-        <div className={`w-10 h-10 rounded-xl ${colors.bg} flex items-center justify-center mb-4`}>
-          <Icon className={`w-5 h-5 ${colors.text}`} />
+        <div className={`mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl ${colors.bg}`}>
+          <Icon className={`w-5 h-5 ${colors.icon}`} />
         </div>
-        <h3 className="text-lg font-semibold text-zinc-900 dark:text-white mb-2 group-hover:text-zehnly-violet dark:group-hover:text-zehnly-violet-light transition-colors">
+        <h3 className="mb-1 font-jakarta text-[1rem] font-semibold text-gray-200 group-hover:text-purple-300 transition-colors">
           {title}
         </h3>
-        <p className="text-sm text-zinc-500 dark:text-dark-text-muted leading-relaxed">
-          {description}
-        </p>
-      </motion.div>
+        <p className="text-purple-200/65">{description}</p>
+        {lightImages.length > 0 && (
+          <span className="inline-flex items-center gap-1 mt-3 text-xs text-purple-400/60 group-hover:text-purple-400 transition-colors">
+            Tap to preview
+            <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" /></svg>
+          </span>
+        )}
+      </article>
 
       {/* Screenshot modal */}
       <AnimatePresence>
@@ -82,7 +79,7 @@ export const FeatureCard = ({
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm"
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm"
             onClick={() => setIsOpen(false)}
           >
             <motion.div
@@ -93,16 +90,12 @@ export const FeatureCard = ({
               className="relative w-full max-w-[360px] aspect-[10/21] max-h-[85vh]"
               onClick={(e) => e.stopPropagation()}
             >
-              {/* Phone frame */}
-              <div className="w-full h-full rounded-[2.8rem] overflow-hidden bg-zinc-900 border-[6px] border-zinc-800 shadow-2xl flex flex-col">
-                {/* Notch */}
-                <div className="h-7 w-full bg-zinc-900 flex justify-center relative shrink-0">
+              <div className="w-full h-full rounded-[2.8rem] overflow-hidden bg-gray-900 border-[6px] border-gray-800 shadow-2xl flex flex-col">
+                <div className="h-7 w-full bg-gray-900 flex justify-center relative shrink-0">
                   <div className="w-20 h-5 bg-black rounded-b-xl absolute top-0" />
                 </div>
-
-                {/* Screen */}
                 <div className="flex-1 bg-white relative overflow-hidden">
-                  {imagesToDisplay.length > 0 ? (
+                  {lightImages.length > 0 && (
                     <AnimatePresence mode="wait">
                       <motion.div
                         key={currentImageIndex}
@@ -112,46 +105,22 @@ export const FeatureCard = ({
                         transition={{ duration: 0.3 }}
                         className="absolute inset-0"
                       >
-                        <Image
-                          src={imagesToDisplay[currentImageIndex]}
-                          alt={`${title} screenshot ${currentImageIndex + 1}`}
-                          fill
-                          className="object-cover"
-                        />
+                        <Image src={lightImages[currentImageIndex]} alt={`${title} screenshot`} fill className="object-cover" />
                       </motion.div>
                     </AnimatePresence>
-                  ) : (
-                    <div className="flex items-center justify-center h-full bg-zinc-50">
-                      <Icon className="w-16 h-16 text-zinc-200" />
-                    </div>
                   )}
-
-                  {/* Close */}
-                  <button
-                    onClick={() => setIsOpen(false)}
-                    className="absolute top-3 right-3 w-8 h-8 bg-black/30 backdrop-blur-md rounded-full flex items-center justify-center text-white hover:bg-black/50 transition-colors z-10"
-                  >
+                  <button onClick={() => setIsOpen(false)} className="absolute top-3 right-3 w-8 h-8 bg-black/30 backdrop-blur-md rounded-full flex items-center justify-center text-white hover:bg-black/50 transition-colors z-10">
                     <X className="w-4 h-4" />
                   </button>
-
-                  {/* Dots */}
-                  {imagesToDisplay.length > 1 && (
+                  {lightImages.length > 1 && (
                     <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-1.5 z-10">
-                      {imagesToDisplay.slice(0, 10).map((_, i) => (
-                        <button
-                          key={i}
-                          onClick={() => setCurrentImageIndex(i)}
-                          className={`h-1.5 rounded-full transition-all ${
-                            i === currentImageIndex ? 'bg-white w-4' : 'bg-white/40 w-1.5'
-                          }`}
-                        />
+                      {lightImages.slice(0, 8).map((_, i) => (
+                        <button key={i} onClick={() => setCurrentImageIndex(i)} className={`h-1.5 rounded-full transition-all ${i === currentImageIndex ? "bg-white w-4" : "bg-white/40 w-1.5"}`} />
                       ))}
                     </div>
                   )}
                 </div>
-
-                {/* Home indicator */}
-                <div className="h-5 w-full bg-zinc-900 flex justify-center items-center shrink-0">
+                <div className="h-5 w-full bg-gray-900 flex justify-center items-center shrink-0">
                   <div className="w-28 h-1 bg-white/20 rounded-full" />
                 </div>
               </div>

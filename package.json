@@ -9,6 +9,8 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@headlessui/react": "^2.2.9",
+    "aos": "^2.3.4",
     "clsx": "^2.1.1",
     "framer-motion": "^12.34.0",
     "lucide-react": "^0.563.0",
@@ -22,6 +24,7 @@
   "devDependencies": {
     "@netlify/plugin-nextjs": "^5.15.8",
     "@tailwindcss/postcss": "^4",
+    "@types/aos": "^3.0.7",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",

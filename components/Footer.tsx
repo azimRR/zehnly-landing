@@ -1,89 +1,86 @@
-"use client";
-
-import { Instagram, Twitter, Facebook } from "lucide-react";
-import Link from "next/link";
 import Image from "next/image";
-import { useTranslations } from "next-intl";
+import Link from "next/link";
 
 export const Footer = () => {
-  const t = useTranslations('Footer');
-
   return (
-    <div className="flex flex-col">
-      {/* CTA Section */}
-      <section className="py-24 lg:py-32 px-6">
-        <div className="max-w-2xl mx-auto text-center">
-          <div className="relative w-20 h-20 mx-auto mb-8">
-            <Image
-              src="/assets/zehnly-logo.png"
-              alt="Zehnly"
-              fill
-              className="object-contain"
-            />
-          </div>
-          <h2 className="text-3xl lg:text-4xl font-bold tracking-tight mb-4">
-            {t('getTheApp')}
-          </h2>
-          <p className="text-zinc-500 dark:text-dark-text-muted text-lg mb-10 max-w-md mx-auto">
-            {t('journeyPart1')} {t('journeyPart2')}
-          </p>
-          <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <a
-              href="https://apps.apple.com/uz/app/zehnly-ai/id6747878184"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-xl bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 font-semibold hover:opacity-90 transition-opacity"
-            >
-              <svg viewBox="0 0 384 512" fill="currentColor" className="w-[18px] h-[18px]"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5c0 66.2 23.9 122.2 52.4 167.5 20.3 32.2 47.8 71.8 77.3 71.8 30.3 0 42.7-16.4 82.3-16.4 46.3 0 52.8 14.1 82.8 14.1 69.7-11.9 95.7-93.7 95.7-93.7-1 .1-47.8-21.3-48.4-53.1zM245.9 76.8c12.4-19.1 27.6-35 50.7-35 8.1 43-22.1 86.8-50.7 86.8-9.4-46.3 12.4-70.9 12.4-70.9z"/></svg>
-              App Store
-            </a>
-            <a
-              href="https://play.google.com/store/apps/details?id=ai.zehnly&pcampaignid=web_share"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-xl bg-zehnly-green text-white font-semibold hover:opacity-90 transition-opacity"
-            >
-              <svg viewBox="0 0 512 512" fill="currentColor" className="w-[18px] h-[18px]"><path d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8zM104.6 499l280.8-161.2-60.1-60.1L104.6 499z"/></svg>
-              Google Play
-            </a>
-          </div>
+    <footer>
+      <div className="relative mx-auto max-w-6xl px-4 sm:px-6">
+        {/* Glow */}
+        <div className="pointer-events-none absolute bottom-0 left-1/2 -z-10 -translate-x-1/2" aria-hidden="true">
+          <div className="w-[600px] h-[300px] bg-purple-500/5 rounded-full blur-[100px]" />
         </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="border-t border-zinc-200 dark:border-dark-border px-6 py-12">
-        <div className="max-w-6xl mx-auto">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-            <div className="flex flex-col md:flex-row items-center gap-6">
-              <span className="text-lg font-bold text-zinc-900 dark:text-white tracking-tight">ZEHNLY</span>
-              <div className="flex items-center gap-6 text-sm text-zinc-400 dark:text-dark-text-subtle">
-                <Link href="#" className="hover:text-zinc-700 dark:hover:text-zinc-300 transition-colors">{t('about')}</Link>
-                <Link href="#" className="hover:text-zinc-700 dark:hover:text-zinc-300 transition-colors">{t('privacyPolicy')}</Link>
-                <Link href="#" className="hover:text-zinc-700 dark:hover:text-zinc-300 transition-colors">{t('termsOfService')}</Link>
+        <div className="grid grid-cols-2 justify-between gap-12 py-8 sm:grid-rows-[auto_auto] md:grid-cols-4 md:grid-rows-[auto_auto] md:py-12 lg:grid-cols-[repeat(4,minmax(0,140px))_1fr] lg:grid-rows-1 xl:gap-20">
+          {/* Product */}
+          <div className="space-y-2">
+            <h3 className="text-sm font-medium text-gray-200">Product</h3>
+            <ul className="space-y-2 text-sm">
+              <li><a className="text-purple-200/65 transition hover:text-purple-400" href="#features">Features</a></li>
+              <li><a className="text-purple-200/65 transition hover:text-purple-400" href="#pricing">Pricing</a></li>
+              <li><a className="text-purple-200/65 transition hover:text-purple-400" href="#how-it-works">How It Works</a></li>
+              <li><a className="text-purple-200/65 transition hover:text-purple-400" href="#speaking">Speaking Practice</a></li>
+            </ul>
+          </div>
+          {/* Company */}
+          <div className="space-y-2">
+            <h3 className="text-sm font-medium text-gray-200">Company</h3>
+            <ul className="space-y-2 text-sm">
+              <li><Link className="text-purple-200/65 transition hover:text-purple-400" href="#">About Us</Link></li>
+              <li><Link className="text-purple-200/65 transition hover:text-purple-400" href="#">Contact</Link></li>
+              <li><Link className="text-purple-200/65 transition hover:text-purple-400" href="#">Blog</Link></li>
+            </ul>
+          </div>
+          {/* Legal */}
+          <div className="space-y-2">
+            <h3 className="text-sm font-medium text-gray-200">Legal</h3>
+            <ul className="space-y-2 text-sm">
+              <li><Link className="text-purple-200/65 transition hover:text-purple-400" href="#">Privacy Policy</Link></li>
+              <li><Link className="text-purple-200/65 transition hover:text-purple-400" href="#">Terms of Service</Link></li>
+              <li><Link className="text-purple-200/65 transition hover:text-purple-400" href="#">Cookie Policy</Link></li>
+            </ul>
+          </div>
+          {/* Download */}
+          <div className="space-y-2">
+            <h3 className="text-sm font-medium text-gray-200">Download</h3>
+            <ul className="space-y-2 text-sm">
+              <li><a className="text-purple-200/65 transition hover:text-purple-400" href="https://apps.apple.com/uz/app/zehnly-ai/id6747878184" target="_blank" rel="noopener noreferrer">App Store</a></li>
+              <li><a className="text-purple-200/65 transition hover:text-purple-400" href="https://play.google.com/store/apps/details?id=ai.zehnly&pcampaignid=web_share" target="_blank" rel="noopener noreferrer">Google Play</a></li>
+            </ul>
+          </div>
+          {/* Brand */}
+          <div className="col-span-2 md:col-span-4 lg:col-span-1 lg:text-right">
+            <div className="mb-3 flex items-center gap-2 lg:justify-end">
+              <div className="relative w-8 h-8">
+                <Image src="/assets/zehnly-logo.png" alt="Zehnly" fill className="object-contain" />
               </div>
+              <span className="font-jakarta font-bold text-gray-200">ZEHNLY</span>
             </div>
-            <div className="flex items-center gap-3">
-              <SocialLink href="#" icon={Twitter} />
-              <SocialLink href="#" icon={Instagram} />
-              <SocialLink href="#" icon={Facebook} />
+            <div className="text-sm">
+              <p className="mb-3 text-purple-200/65">
+                &copy; {new Date().getFullYear()} Zehnly AI
+                <span className="text-gray-700"> &middot; </span>
+                <Link className="text-purple-200/65 transition hover:text-purple-400" href="#">Terms</Link>
+              </p>
+              <ul className="inline-flex gap-1">
+                <li>
+                  <a className="flex items-center justify-center text-purple-500 transition hover:text-purple-400" href="#" aria-label="Instagram">
+                    <svg className="h-8 w-8 fill-current" viewBox="0 0 32 32"><path d="M16 8.5a7.5 7.5 0 1 0 0 15 7.5 7.5 0 0 0 0-15ZM16 21a5 5 0 1 1 0-10 5 5 0 0 1 0 10Zm8.2-12.8a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0ZM27 16c0-3-.1-5.8-.5-8-.4-2.3-1.7-3.6-4-4C20.3 3.5 17.5 3.4 14.5 3.4S8.7 3.5 6.5 3.9c-2.3.5-3.6 1.8-4 4.1C2.1 10.2 2 13 2 16s.1 5.8.5 8c.4 2.3 1.7 3.6 4 4 2.2.4 5 .5 8 .5s5.8-.1 8-.5c2.3-.4 3.6-1.7 4-4 .4-2.2.5-5 .5-8Zm-2.5 7.6c-.3 1.4-1.1 2.2-2.5 2.5-1.8.3-4.5.4-6 .4s-4.2-.1-6-.4c-1.4-.3-2.2-1.1-2.5-2.5-.3-1.8-.4-4.5-.4-7.6s.1-5.8.4-7.6c.3-1.4 1.1-2.2 2.5-2.5C11.8 5.6 14.5 5.5 16 5.5s4.2.1 6 .4c1.4.3 2.2 1.1 2.5 2.5.3 1.8.4 4.5.4 7.6s-.1 5.8-.4 7.6Z" /></svg>
+                  </a>
+                </li>
+                <li>
+                  <a className="flex items-center justify-center text-purple-500 transition hover:text-purple-400" href="#" aria-label="Twitter">
+                    <svg className="h-8 w-8 fill-current" viewBox="0 0 32 32"><path d="m13.063 9 3.495 4.475L20.601 9h2.454l-5.359 5.931L24 23h-4.938l-3.866-4.893L10.771 23H8.316l5.735-6.342L8 9h5.063Zm-.74 1.347h-1.457l8.875 11.232h1.36l-8.778-11.232Z" /></svg>
+                  </a>
+                </li>
+                <li>
+                  <a className="flex items-center justify-center text-purple-500 transition hover:text-purple-400" href="#" aria-label="Facebook">
+                    <svg className="h-8 w-8 fill-current" viewBox="0 0 32 32"><path d="M13 26V17H9v-4h4v-3.2C13 6.4 15.4 4 18.8 4c1.5 0 3.2.3 3.2.3v3.7h-1.8c-1.8 0-2.4 1.1-2.4 2.3V13h4.2l-.7 4h-3.5v9h-4.8Z" /></svg>
+                  </a>
+                </li>
+              </ul>
             </div>
-          </div>
-          <div className="mt-8 pt-8 border-t border-zinc-100 dark:border-dark-border/50">
-            <p className="text-center text-xs text-zinc-400 dark:text-dark-text-subtle">
-              &copy; {new Date().getFullYear()} Zehnly AI. {t('allRightsReserved')}
-            </p>
           </div>
         </div>
-      </footer>
-    </div>
+      </div>
+    </footer>
   );
 };
-
-const SocialLink = ({ href, icon: Icon }: { href: string; icon: any }) => (
-  <a
-    href={href}
-    className="w-8 h-8 rounded-lg flex items-center justify-center text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
-  >
-    <Icon className="w-4 h-4" />
-  </a>
-);
