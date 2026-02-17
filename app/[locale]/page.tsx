@@ -16,8 +16,8 @@ export default function Home() {
       {/* <HowItWorks /> */}
       {/* <FeatureSection /> */}
       <SpeakingPractice />
-      <Testimonials />
-      <Pricing />
+      {/* <Testimonials /> */}
+      {/* <Pricing /> */}
       <Cta />
       <Footer />
     </main>
