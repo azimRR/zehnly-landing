@@ -5,6 +5,7 @@ import { FeatureSection } from "@/components/FeatureSection";
 import SpeakingPractice from "@/components/SpeakingPractice";
 import Testimonials from "@/components/Testimonials";
 import Pricing from "@/components/Pricing";
+import TeamSection from "@/components/TeamSection";
 import Cta from "@/components/Cta";
 import { Footer } from "@/components/Footer";
 
@@ -18,6 +19,7 @@ export default function Home() {
       <SpeakingPractice />
       {/* <Testimonials /> */}
       {/* <Pricing /> */}
+      <TeamSection />
       <Cta />
       <Footer />
     </main>

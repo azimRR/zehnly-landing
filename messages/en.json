@@ -94,6 +94,17 @@
     "yearlyCta": "Start Yearly",
     "bestValue": "Best Value"
   },
+  "Team": {
+    "badge": "Meet the Team",
+    "title": "The people behind Zehnly",
+    "subtitle": "A small, passionate team building the future of language learning.",
+    "ceoName": "Team Member 1",
+    "ceoRole": "CEO & Founder",
+    "eng1Name": "Team Member 2",
+    "eng1Role": "Software Engineer",
+    "eng2Name": "Team Member 3",
+    "eng2Role": "Software Engineer"
+  },
   "Cta": {
     "title": "Start your English journey today",
     "subtitle": "Join 30,000+ learners who are already improving their English with Zehnly AI. Download free and start playing.",

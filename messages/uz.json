@@ -94,6 +94,17 @@
     "yearlyCta": "Yillikni boshlash",
     "bestValue": "Eng yaxshi narx"
   },
+  "Team": {
+    "badge": "Jamoamiz",
+    "title": "Zehnly ortidagi odamlar",
+    "subtitle": "Til o'rganish kelajagini yaratayotgan kichik, ishtiyoqli jamoa.",
+    "ceoName": "Jamoa a'zosi 1",
+    "ceoRole": "CEO va asoschisi",
+    "eng1Name": "Jamoa a'zosi 2",
+    "eng1Role": "Dasturiy ta'minot muhandisi",
+    "eng2Name": "Jamoa a'zosi 3",
+    "eng2Role": "Dasturiy ta'minot muhandisi"
+  },
   "Cta": {
     "title": "Ingliz tili sayohatingizni bugun boshlang",
     "subtitle": "Zehnly AI bilan ingliz tilini yaxshilayotgan 30 000+ o'quvchilarga qo'shiling. Bepul yuklab oling va o'ynashni boshlang.",
