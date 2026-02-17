@@ -53,6 +53,16 @@ html {
   }
 }
 
+@layer utilities {
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+}
+
 @layer components {
   .btn,
   .btn-sm {
