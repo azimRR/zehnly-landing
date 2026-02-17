@@ -1,11 +1,11 @@
 export default function Testimonials() {
   const testimonials = [
-    { name: "Dilnoza M.", country: "Uzbekistan", content: "I've tried many English apps, but Zehnly is the only one that made learning feel like playing. Word Battle is so addictive!" },
-    { name: "Aziz K.", country: "Uzbekistan", content: "The speaking practice feature changed everything for me. I went from being afraid to speak to having real conversations in English." },
-    { name: "Anna V.", country: "Russia", content: "My son loves Zehnly. He doesn't even realize he's studying because the games are so fun. His vocabulary has doubled in 3 months." },
-    { name: "Javlon T.", country: "Uzbekistan", content: "Flashcards + Connections is the perfect combo. I learn words faster than ever and actually remember them. Totally worth the subscription." },
-    { name: "Kamila R.", country: "Russia", content: "As a teacher, I recommend Zehnly to all my students. The AI adapts perfectly to each level. It's like having a personal tutor." },
-    { name: "Sardor N.", country: "Uzbekistan", content: "I use Zehnly every day on the bus. 15 minutes of games and my English keeps improving. The progress tracking keeps me motivated." },
+    { name: "Jasur Abdullayev", country: "Tashkent, UZ", stars: 5, content: "Word Battle is actually addictive. I play on the metro every morning." },
+    { name: "Madina Karimova", country: "Samarkand, UZ", stars: 5, content: "My pronunciation improved so much with the speaking practice. Really impressed." },
+    { name: "Алексей Петров", country: "Moscow, RU", stars: 5, content: "Finally an app that doesn't feel like homework. My kids love it too." },
+    { name: "Sherzod Rahimov", country: "Bukhara, UZ", stars: 4, content: "Flashcards + spaced repetition = I actually remember words now." },
+    { name: "Нигора Исмаилова", country: "Tashkent, UZ", stars: 5, content: "I went from 200 words to 2000 in 4 months. The yearly plan is worth it." },
+    { name: "Дарья Козлова", country: "Saint Petersburg, RU", stars: 5, content: "I recommend this to all my English students. The AI adapts perfectly." },
   ];
 
   return (
@@ -35,23 +35,20 @@ export default function Testimonials() {
               data-aos="fade-up"
               data-aos-delay={i * 100}
             >
-              <div className="relative z-10 flex flex-col gap-4">
-                <div className="flex gap-1">
+              <div className="relative z-10 flex flex-col gap-3">
+                <div className="flex gap-0.5">
                   {[...Array(5)].map((_, j) => (
-                    <svg key={j} className="w-4 h-4 text-yellow-400 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+                    <svg key={j} className={`w-4 h-4 fill-current ${j < t.stars ? "text-yellow-400" : "text-gray-700"}`} viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
                   ))}
                 </div>
-                <p className="text-purple-200/65 before:content-['\u201C'] after:content-['\u201D']">
-                  {t.content}
-                </p>
-                <div className="flex items-center gap-3">
-                  <div className="w-9 h-9 rounded-full bg-linear-to-br from-purple-500 to-green-500 flex items-center justify-center text-white font-semibold text-sm">
+                <p className="text-sm text-purple-200/65">&ldquo;{t.content}&rdquo;</p>
+                <div className="flex items-center gap-3 pt-1">
+                  <div className="w-8 h-8 rounded-full bg-linear-to-br from-purple-500 to-green-500 flex items-center justify-center text-white font-semibold text-xs">
                     {t.name.charAt(0)}
                   </div>
-                  <div className="text-sm font-medium text-gray-200">
-                    <span>{t.name}</span>
-                    <span className="text-gray-700"> &mdash; </span>
-                    <span className="text-purple-200/65">{t.country}</span>
+                  <div>
+                    <div className="text-sm font-medium text-gray-200">{t.name}</div>
+                    <div className="text-xs text-purple-200/40">{t.country}</div>
                   </div>
                 </div>
               </div>
