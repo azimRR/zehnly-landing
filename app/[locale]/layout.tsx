@@ -56,7 +56,7 @@ export default async function RootLayout({
           <div className="flex min-h-screen flex-col overflow-hidden supports-[overflow:clip]:overflow-clip">
             <Navbar />
             <AosInit />
-            <main className="relative flex grow flex-col">{children}</main>
+            <main className="relative flex grow flex-col pt-20">{children}</main>
           </div>
         </NextIntlClientProvider>
       </body>
